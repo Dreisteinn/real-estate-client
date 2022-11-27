@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Add.module.scss';
 import { getArrayFilledWithImages } from '../../helpers';
 import { useNewPostCtx } from '../../store/newPostContextProvider';
 import { IoImagesOutline } from 'react-icons/io5';
 
-const Upload = () => {
+const Upload = ({ resetted }) => {
 	const [selectedImages, setSelectedImages] = useState(null);
 	const [previewSources, setPreviewSources] = useState(null);
 	const { setProperty } = useNewPostCtx();
+
+	useEffect(() => {
+		if (resetted) {
+			setSelectedImages(null);
+			setPreviewSources(null);
+		}
+	}, [resetted]);
 
 	const handleChange = (event) => {
 		const files = event.target.files;

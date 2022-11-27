@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import initStateOfProperty from '../../store/initStateOfProperty';
 import { useNewPostCtx } from '../../store/newPostContextProvider';
 import styles from './Add.module.scss';
@@ -8,15 +8,16 @@ import DropDowns from './DropDowns';
 import Features from './Features';
 import GroupOfInputs from './GroupOfInputs';
 import Upload from './Upload';
-import { useNavigate } from 'react-router-dom';
 
 const Add = (e) => {
+	const [isResetted, setIsResetted] = useState(false);
 	const { property, setProperty } = useNewPostCtx();
-	const navigate = useNavigate();
+	const baseUrl = 'https://real-estate-drainerr.onrender.com';
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setIsResetted(false);
 		try {
-			fetch('/api/properties', {
+			fetch(`${baseUrl}/api/properties`, {
 				method: 'POST',
 				body: JSON.stringify(property),
 				headers: {
@@ -24,7 +25,8 @@ const Add = (e) => {
 				},
 			});
 			setProperty(initStateOfProperty);
-			navigate('/');
+			e.target.reset();
+			setIsResetted(true);
 		} catch (e) {
 			console.log(e.message);
 		}
@@ -40,7 +42,7 @@ const Add = (e) => {
 					<GroupOfInputs />
 				</div>
 				<Details />
-				<Upload />
+				<Upload resetted={isResetted} />
 				<Description />
 				<Features />
 				<button type='submit' className={styles.SubmitButton}>
