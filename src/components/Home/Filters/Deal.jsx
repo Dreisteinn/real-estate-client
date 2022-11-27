@@ -1,13 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import styles from '../Search.module.scss';
+import usePropertiesCtx from '../../../store/propertiesContext';
 const Deal = () => {
 	const [showDeals, setShowDeals] = useState(false);
 	const [typeOfDeal, setTypeOfDeal] = useState('');
+	const { setFilters } = usePropertiesCtx();
 	const dealsRef = useRef();
 	const handleSelect = (selectedType) => {
 		setTypeOfDeal(selectedType);
 		setShowDeals(false);
+		setFilters((prev) => {
+			return { ...prev, transactionType: selectedType };
+		});
 	};
 	useEffect(() => {
 		dealsRef.current.style.visibility = showDeals ? 'visible' : 'none';

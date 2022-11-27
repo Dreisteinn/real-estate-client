@@ -3,13 +3,13 @@ import styles from './Property.module.scss';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { MdPhoneAndroid } from 'react-icons/md';
 
-const Contact = () => {
-	const { publisher, number } = { publisher: 'თიკო გორგიშელი', number: '527367763' };
+const Contact = ({ data }) => {
+	const { name, number } = data.publisher;
 	return (
 		<div className={styles.ContactToPublisher}>
 			<div className={styles.Publisher}>
 				<h3>
-					<BsFillPersonFill /> {publisher}
+					<BsFillPersonFill /> {name}
 				</h3>
 				<h4>
 					<MdPhoneAndroid />

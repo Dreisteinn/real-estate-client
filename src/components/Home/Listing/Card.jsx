@@ -1,27 +1,23 @@
 import React from 'react';
-import image from '../../../images/HeroBackground.jpg';
 import { AiFillCar } from 'react-icons/ai';
 import { FaBath } from 'react-icons/fa';
 import { MdMeetingRoom } from 'react-icons/md';
 import styles from './Card.module.scss';
 import { Link } from 'react-router-dom';
+import { getTitle } from '../../../helpers';
 
-const Card = () => {
-	const { price, img, address, bathroom, parking, room } = {
-		price: '50',
-		img: image,
-		address: 'პეკინის გამზირი, საბურთალო, თბილისი',
-		bathroom: 2,
-		parking: 1,
-		room: 3,
-	};
+const Card = ({ data }) => {
+	const { price, location, transactionType, propertyType } = data;
+	const posterImage = data.images[0];
+	const { bathroom, parking, room } = data.details;
+	const title = getTitle(location, transactionType, propertyType);
 
 	return (
-		<Link to='/property'>
+		<Link to={`/properties/${data.id}`}>
 			<div className={styles.Wrapper}>
-				<img src={img} alt='Property' />
-				<h3>{address}</h3>
-				<h4>{`${price}₾`}</h4>
+				<img src={posterImage} alt='Property' />
+				<h3>{title}</h3>
+				<h4>{price ? `${price.toLocaleString()}₾` : 'ფასი ზუსტდება'}</h4>
 				<ul className={styles.Details}>
 					<li>
 						<AiFillCar /> {parking}

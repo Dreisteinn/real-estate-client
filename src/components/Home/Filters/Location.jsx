@@ -1,16 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import styles from '../Search.module.scss';
+import usePropertiesCtx from '../../../store/propertiesContext';
 const Location = () => {
 	const [locationInputValue, setLocationInputValue] = useState('');
 	const [showLocation, setShowLocation] = useState(false);
 	const [location, setLocation] = useState('');
 	const locationRef = useRef();
+	const { setFilters } = usePropertiesCtx();
 
 	const handleSelect = (selectedLocation) => {
 		setLocation(selectedLocation);
 		setShowLocation(false);
 		setLocationInputValue('');
+		setFilters((prev) => {
+			return { ...prev, location: selectedLocation };
+		});
 	};
 	useEffect(() => {
 		locationRef.current.style.visibility = showLocation ? 'visible' : 'none';

@@ -6,13 +6,8 @@ import { MdMeetingRoom } from 'react-icons/md';
 import { GiHomeGarage } from 'react-icons/gi';
 import { AiTwotoneCalendar } from 'react-icons/ai';
 
-const Details = () => {
-	const { parking, bathroom, room, garage, dateAdded } = {
-		parking: 4,
-		bathroom: 2,
-		garage: 1,
-		dateAdded: '12.05.2021',
-	};
+const Details = ({ details }) => {
+	const { parking, bathroom, room, garage, dateAdded } = details;
 	return (
 		<div className={styles.Details}>
 			<h3>დეტალები</h3>

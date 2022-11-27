@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AdditionalImages from './AdditionalImages';
 import Contact from './Contact';
 import Description from './Description';
@@ -6,27 +6,33 @@ import Details from './Details';
 import Features from './Features';
 import styles from './Property.module.scss';
 import PropertyDetailsHeader from './PropertyHeader';
+import usePropertiesCtx from '../../../store/propertiesContext';
+import { Navigate, useParams } from 'react-router-dom';
 
 const Property = () => {
-	return (
-		<div className={styles.Wrapper}>
-			<PropertyDetailsHeader />
-			<div className={styles.Main}>
-				<div className={styles.Info}>
-					<img
-						src='https://images.unsplash.com/photo-1537726235470-8504e3beef77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
-						alt='property'
-						className={styles.MainImage}
-					/>
-					<AdditionalImages />
-					<Details />
-					<Description />
-					<Features />
+	const { id } = useParams();
+	const property = usePropertiesCtx().properties.find((property) => property.id.toString() === id);
+	const [mainImage, setMainImage] = useState(null);
+	if (property) {
+		const initMainImage = property.images[0];
+		return (
+			<div className={styles.Wrapper}>
+				<PropertyDetailsHeader data={property} />
+				<div className={styles.Main}>
+					<div className={styles.Info}>
+						<img src={mainImage || initMainImage} alt='property' className={styles.MainImage} />
+						<AdditionalImages images={property.images} setMainImage={setMainImage} />
+						<Details details={property.details} />
+						<Description description={property.description} />
+						<Features features={property.features} />
+					</div>
+					<Contact data={property} />
 				</div>
-				<Contact />
 			</div>
-		</div>
-	);
+		);
+	} else {
+		return <Navigate to='/' />;
+	}
 };
 
 export default Property;

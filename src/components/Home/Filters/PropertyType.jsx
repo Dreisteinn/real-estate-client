@@ -1,14 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import styles from '../Search.module.scss';
+import usePropertiesCtx from '../../../store/propertiesContext';
 
 const PropertyType = () => {
 	const [showPropertyType, setShowPropertyType] = useState(false);
 	const [propertyType, setPropertyType] = useState('');
 	const propertyTypeRef = useRef();
+	const { setFilters } = usePropertiesCtx();
 	const handleSelect = (selectedPropertyType) => {
 		setPropertyType(selectedPropertyType);
 		setShowPropertyType(false);
+		setFilters((prev) => {
+			return { ...prev, propertyType: selectedPropertyType };
+		});
 	};
 	useEffect(() => {
 		propertyTypeRef.current.style.visibility = showPropertyType ? 'visible' : 'none';

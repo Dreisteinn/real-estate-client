@@ -2,17 +2,33 @@ import React, { useState, useRef, useEffect } from 'react';
 
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import styles from '../Search.module.scss';
+import usePropertiesCtx from '../../../store/propertiesContext';
+import { getHighestPrice } from '../../../helpers';
 
 const Price = () => {
-	const [minPrice, setMinPrice] = useState('');
-	const [maxPrice, setMaxPrice] = useState('');
+	const [minPrice, setMinPrice] = useState(0);
+	const [maxPrice, setMaxPrice] = useState(getHighestPrice());
 	const [showPrice, setShowPrice] = useState(false);
 	const priceRef = useRef();
+	const { setFilters } = usePropertiesCtx();
+
 	useEffect(() => {
 		priceRef.current.style.visibility = showPrice ? 'visible' : 'none';
 		priceRef.current.style.opacity = showPrice ? '1' : '0';
 		priceRef.current.style.zIndex = showPrice ? '7' : 'unset';
 	}, [showPrice]);
+
+	useEffect(() => {
+		setFilters((prev) => {
+			return {
+				...prev,
+				price: {
+					min: minPrice,
+					max: maxPrice,
+				},
+			};
+		});
+	}, [maxPrice, minPrice]); //eslint-disable-line react-hooks/exhaustive-deps
 
 	const handleSettingMaxPrice = (input) => {
 		const inputValue = parseInt(input.value);

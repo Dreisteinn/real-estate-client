@@ -11,7 +11,7 @@ import { IoMdTv } from 'react-icons/io';
 import { MdCheckroom, MdBalcony } from 'react-icons/md';
 import { RiFridgeLine } from 'react-icons/ri';
 
-const Features = () => {
+const Features = ({ features }) => {
 	const offStyles = {
 		textDecoration: 'line-through',
 		color: '#c3c3c3',
@@ -35,26 +35,7 @@ const Features = () => {
 		balcony,
 		fridge,
 		centralHeating,
-	} = {
-		naturalGas: true,
-		IronDoor: true,
-		hotWater: true,
-		ac: true,
-		telephone: false,
-		washingMachine: true,
-		basement: true,
-		garage: false,
-		furniture: true,
-		alarm: false,
-		tv: true,
-		cableTv: true,
-		internet: true,
-		closet: true,
-		balcony: true,
-		fridge: true,
-		centralHeating: true,
-	};
-
+	} = features;
 	return (
 		<div className={styles.Features}>
 			<h3>კეთილმოწყობა</h3>

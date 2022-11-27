@@ -6,18 +6,29 @@ import Search from './Search';
 import Promo from './Promo/Promo';
 import SecondPromo from './Promo/SecondPromo';
 import ForRent from './Listing/ForRent';
+import usePropertiesCtx from '../../store/propertiesContext';
+import FilteredProperties from './Filters/FilteredProperties';
+import { getInitState } from '../../helpers';
 
 const Home = () => {
+	const filters = usePropertiesCtx().filters;
+	const initState = getInitState(filters);
 	return (
 		<div className={styles.HomeWrapper}>
 			<div className={styles.HeroWrapper}>
 				<Hero />
 			</div>
 			<Search />
-			<Promo />
-			<ForSale />
-			<SecondPromo />
-			<ForRent />
+			{initState ? (
+				<>
+					<Promo />
+					<ForSale />
+					<SecondPromo />
+					<ForRent />
+				</>
+			) : (
+				<FilteredProperties />
+			)}
 		</div>
 	);
 };

@@ -68,7 +68,7 @@ header {
 	@include media.md {
 		align-items: flex-start;
 	}
-	@include media.sm {
+	@include media.md {
 		.HamburgerIcon {
 			display: flex;
 			z-index: 5;

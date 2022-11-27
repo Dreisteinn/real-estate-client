@@ -28,7 +28,7 @@
 				color: #979797;
 			}
 		}
-		.Price_PricePerSquareMeter {
+		.Price_Area {
 			display: flex;
 			align-items: flex-start;
 			justify-content: space-between;
@@ -37,7 +37,7 @@
 			.Price {
 				color: white;
 			}
-			.PricePerSquareMeter {
+			.Area {
 				color: #979797;
 			}
 		}
@@ -55,42 +55,50 @@
 			flex-direction: column;
 			justify-content: center;
 			gap: 40px;
+			width: 100%;
 			.MainImage {
 				border-radius: 2px;
 				border-top-right-radius: 35px;
 				width: 90%;
-				box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-				border: 5px solid white;
+				height: 500px;
+				object-fit: cover;
+				box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 			}
 			.AdditionalImages {
+				width: 90%;
+				margin-top: -20px;
 				ul {
 					display: flex;
 					gap: 10px;
-					width: 90%;
+					width: 100%;
 					overflow-x: hidden;
 					.Swiper {
 						overflow-x: hidden;
-						max-width: 50vw;
-						@include media.xl {
-							max-width: 70vw;
-						}
-						@include media.lg {
-							max-width: 80vw;
-						}
+						width: 100%;
+						display: grid;
+						grid-template-columns: repeat(auto-fill, minmax(80px, 100px));
 					}
 					li {
 						img {
-							height: 100px;
-							width: 100px;
+							width: 7.5vw;
+							height: 6vw;
+							object-fit: cover;
 							border-top-right-radius: 10px;
 							cursor: pointer;
 							transition: filter 0.2s ease-out;
 							&:hover {
 								filter: brightness(80%);
 							}
+							@include media.xl {
+								height: 8vw;
+								width: 8vw;
+							}
 							@include media.lg {
-								height: 11vw;
-								width: 11vw;
+								height: 9vw;
+								width: 9vw;
+							}
+							@include media.sm {
+								border-radius: 3px;
 							}
 						}
 					}
@@ -172,7 +180,7 @@
 					display: flex;
 					align-items: center;
 					gap: 5px;
-					font-weight: 500;
+					font-weight: 600;
 				}
 			}
 			input,
@@ -277,7 +285,7 @@
 			flex-direction: column;
 			gap: 20px;
 			text-align: center;
-			.Price_PricePerSquareMeter {
+			.Price_Area {
 				flex-direction: unset;
 			}
 			.Title_Address {
