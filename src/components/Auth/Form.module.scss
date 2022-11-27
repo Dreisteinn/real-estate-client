@@ -1,0 +1,94 @@
+@use '../../styles/global/mixins';
+@use '../../styles/global/media';
+
+$inputWidth: 70%;
+$borderRadius: 10px;
+.Wrapper {
+	min-height: 80vh;
+	background-color: #f5f5f5;
+	width: 100%;
+	padding: 50px 0;
+	@include mixins.center-flex;
+	form {
+		min-width: 40%;
+		@include mixins.center-flex;
+		flex-direction: column;
+		gap: 10px;
+		background-color: white;
+		padding: 80px 30px;
+		border-radius: 10px;
+		box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+		h1 {
+			margin-bottom: 40px;
+			font-weight: 500;
+		}
+		.EmailWrapper,
+		.PasswordWrapper {
+			@include mixins.center-flex;
+			width: $inputWidth;
+			border: 1px solid gray;
+			padding: 10px;
+			min-width: max-content;
+			border-radius: 10px;
+			svg {
+				margin-right: 10px;
+				font-size: 1.2rem;
+				color: rgb(88, 88, 88);
+			}
+		}
+		input {
+			font-size: 16px;
+			border: unset;
+			border-left: 1px solid darkgray;
+			width: 100%;
+			height: 100%;
+			outline: unset;
+			padding-left: 10px;
+		}
+		button {
+			padding: 10px 20px;
+			min-width: $inputWidth;
+			border-radius: $borderRadius;
+			border: none;
+			font-size: 16px;
+			cursor: pointer;
+			background: #ffa600;
+			transition: background 0.2s linear;
+			box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+			color: white;
+			&:hover {
+				background: #fc8600;
+			}
+		}
+		.SignupBtn {
+			background-color: unset;
+			color: rgb(65, 65, 65);
+			font-weight: 500;
+			border: none;
+			width: max-content;
+			padding: 5px 10px;
+			border: none;
+			cursor: pointer;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+	@include media.lg {
+		form {
+			min-width: 60%;
+			h1 {
+				font-size: 24px;
+			}
+			input,
+			button {
+				font-size: 14px;
+			}
+		}
+	}
+	@include media.sm {
+		form {
+			min-width: 80%;
+		}
+	}
+}

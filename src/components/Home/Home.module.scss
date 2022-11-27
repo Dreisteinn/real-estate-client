@@ -1,0 +1,33 @@
+@use '../../styles/global/mixins';
+@use '../../styles/global/media';
+.HomeWrapper {
+	height: 100%;
+	.HeroWrapper {
+		width: 100%;
+		min-height: 45vw;
+		background-image: url('../../images/HeroBackground.jpg');
+		background-position: center;
+		background-size: cover;
+		background-color: rgba(0, 0, 0, 0.493);
+		background-blend-mode: color;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		gap: 5vw;
+		@include media.xl {
+			min-height: 55vw;
+			gap: 6vw;
+		}
+		@include media.md {
+			min-height: 70vw;
+		}
+		@include media.sm {
+			gap: 3vw;
+			min-height: 88vw;
+		}
+		@media (max-width: 420px) {
+			min-height: 110vw;
+		}
+	}
+}

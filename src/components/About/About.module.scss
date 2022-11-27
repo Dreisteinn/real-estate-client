@@ -1,0 +1,57 @@
+@use '../../styles/global/mixins';
+@use '../../styles/global/media';
+
+.Wrapper {
+	min-height: 80vh;
+	width: 100%;
+	@include mixins.center-flex;
+	margin: 100px 0;
+	flex-direction: column;
+	.InnerContainer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 5vw;
+		.Info {
+			@include mixins.center-flex;
+			flex-direction: column;
+			gap: 60px;
+			padding: 30px;
+			p {
+				margin-left: 40px;
+				font-size: 18px;
+			}
+		}
+		img {
+			border-top-left-radius: 40px;
+			box-shadow: 0px 62px 54px 0px rgba(0, 0, 0, 0.3);
+			width: 40%;
+		}
+	}
+	@include media.lg {
+		margin: 50px 0;
+		.InnerContainer {
+			img {
+				display: none;
+			}
+			.Info {
+				p {
+					margin: 0;
+				}
+			}
+		}
+	}
+	@include media.sm {
+		min-height: unset;
+		.InnerContainer {
+			h1 {
+				font-size: 28px;
+			}
+			.Info {
+				p {
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}

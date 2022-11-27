@@ -1,0 +1,158 @@
+@use '../styles/global/media';
+
+.Wrapper {
+	padding: 5vw;
+	background: rgb(39, 26, 0);
+	background: linear-gradient(225deg, rgba(39, 26, 0, 1) 19%, rgba(0, 0, 0, 1) 100%);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	.Map {
+		width: auto;
+		iframe {
+			width: 35vw;
+			height: 280px;
+		}
+	}
+	.Information {
+		max-width: 60vw;
+		h2 {
+			span {
+				color: #ffac12;
+			}
+			margin-bottom: 70px;
+		}
+		.NavAboutWrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.About {
+				img {
+					width: 100px;
+					margin-bottom: 40px;
+				}
+				.Socials {
+					display: flex;
+					align-items: center;
+					gap: 30px;
+					font-size: 24px;
+					cursor: pointer;
+					li {
+						transition: color 0.25s linear;
+						&:hover {
+							color: #fdd03d;
+						}
+					}
+				}
+			}
+			.Navigation {
+				align-self: flex-end;
+				h3 {
+					margin-bottom: 10px;
+					color: #ffac12;
+				}
+				ul {
+					display: flex;
+					flex-direction: column;
+					gap: 10px;
+					justify-content: start;
+					li {
+						font-weight: 400;
+						font-size: 16px;
+						transition: color 0.25s linear;
+						display: flex;
+						align-items: center;
+						gap: 10px;
+					}
+				}
+			}
+		}
+	}
+	@include media.lg {
+		.Information {
+			.NavAboutWrapper {
+				justify-content: space-evenly;
+			}
+		}
+	}
+	@include media.md {
+		flex-direction: column;
+		gap: 30px;
+		padding: 10vw 5vw 5vw 5vw;
+		.Map {
+			width: 100%;
+			iframe {
+				height: 25vw;
+				width: 100%;
+			}
+		}
+		.Information {
+			max-width: 100%;
+			h2 {
+				font-size: 20px;
+				margin-bottom: 5vw;
+			}
+			.NavAboutWrapper {
+				justify-content: space-between;
+				.Navigation {
+					h3 {
+						font-size: 16px;
+						margin-bottom: 5px;
+					}
+					ul {
+						gap: 3px;
+						li {
+							font-size: 14px;
+						}
+					}
+				}
+				.About {
+					img {
+						width: 80px;
+						margin-bottom: 15px;
+					}
+					.Socials {
+						gap: 5px;
+					}
+				}
+			}
+		}
+	}
+	@include media.sm {
+		.Map {
+			iframe {
+				height: 25vw;
+				border-radius: 5px;
+			}
+		}
+		.Information {
+			h2 {
+				font-size: 22px;
+				margin-bottom: 40px;
+			}
+		}
+	}
+	@media (max-width: 320px) {
+		.Information {
+			.NavAboutWrapper {
+				.About {
+					img {
+						width: 60px;
+						margin-bottom: 15px;
+					}
+					.Socials {
+						gap: 2px;
+						svg {
+							font-size: 1rem;
+						}
+					}
+				}
+			}
+			h2 {
+				font-size: 18px;
+				text-align: center;
+			}
+		}
+	}
+}

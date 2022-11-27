@@ -1,0 +1,199 @@
+@use '../../styles/global/mixins';
+@use '../../styles/global/media';
+
+$gap: 2vw;
+$box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px,
+	rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+$border-radius: 8px;
+
+.Wrapper {
+	@include mixins.center-flex;
+	width: max-content;
+	margin: auto;
+	min-width: max-content;
+	transform: translateY(-50%);
+	background-color: white;
+	padding: 20px 40px;
+	border-radius: 8px;
+	box-shadow: $box-shadow;
+	position: relative;
+	gap: $gap;
+	z-index: 2;
+	.InnerContainer {
+		min-width: max-content;
+		transition: color 0.25s linear;
+		padding: 5px 0;
+		@include mixins.center-flex;
+		.Filter {
+			@include mixins.center-flex;
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 10px;
+			.Select {
+				@include mixins.center-flex;
+				gap: 5px;
+				h4 {
+					cursor: pointer;
+					font-weight: 400;
+					color: #889099;
+				}
+				svg {
+					margin-top: 3px;
+					color: #2c3a61;
+					&:hover {
+						cursor: pointer;
+						color: rgb(97, 97, 97);
+					}
+				}
+			}
+		}
+		h4 {
+			font-weight: 500;
+			font-size: 15px;
+			color: #2c3a61;
+			font-weight: bold;
+			cursor: default;
+		}
+		&:not(:last-child) {
+			border-right: 1px solid darkgray;
+			padding-right: $gap;
+		}
+	}
+	.DropDownWrapper {
+		position: absolute;
+		bottom: 0;
+		transform: translateY(104%);
+		background-color: white;
+		box-shadow: $box-shadow;
+		border-radius: $border-radius;
+		width: 100%;
+		left: 0;
+		padding: 20px 30px;
+		display: flex;
+		align-items: start;
+		flex-direction: column;
+		gap: 10px;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		opacity: 0;
+		transition: opacity 0.2s linear;
+		visibility: none;
+		font-size: 15px;
+		input {
+			padding: 8px 10px;
+			border-radius: 5px;
+			border: 1px solid gray;
+			outline: unset;
+		}
+		.DealsList,
+		.Location,
+		.PropertyType {
+			display: flex;
+			flex-wrap: wrap;
+			width: 100%;
+			gap: 5px;
+
+			li {
+				padding: 5px 10px;
+				border: 1px solid gray;
+				border-radius: 10px;
+				cursor: pointer;
+				transition: background 0.2s linear;
+				&:hover {
+					background-color: rgb(255, 206, 71);
+				}
+			}
+		}
+		.Price {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.MinMax {
+			display: flex;
+			gap: 5px;
+			input {
+				width: 120px;
+			}
+		}
+	}
+	@include media.lg {
+		gap: 1.5vw;
+		padding: 20px 30px;
+		.InnerContainer {
+			svg,
+			h4 {
+				font-size: 13px;
+			}
+			.DropDownWrapper {
+				font-size: 13px;
+			}
+		}
+	}
+	@include media.sm {
+		gap: 1.2vw;
+		padding: 15px 20px;
+		.InnerContainer {
+			gap: 3px;
+			svg,
+			h4 {
+				font-size: 11px;
+			}
+			svg {
+				margin: 0;
+			}
+			.DropDownWrapper {
+				padding: 15px 20px;
+				font-size: 11px;
+			}
+		}
+	}
+	@include media.xs {
+		gap: 5px;
+		padding: 10px;
+		.InnerContainer {
+			padding: 2px 0;
+			.Filter {
+				.Select {
+					h4 {
+						max-width: 90%;
+					}
+				}
+				gap: 5px;
+			}
+			svg,
+			h4 {
+				font-size: 7.5px;
+			}
+			.DropDownWrapper {
+				padding: 10px;
+				gap: 10px;
+				font-size: 8px;
+				span {
+					font-size: 10px;
+				}
+				ul {
+					gap: 2px;
+				}
+				li {
+					border-radius: 3px;
+					padding: 3px 6px;
+				}
+				input {
+					font-size: 7px;
+					padding: 4px 8px;
+					border-radius: 2px;
+					width: max-content;
+				}
+			}
+		}
+	}
+	@media (max-width: 300px) {
+		.InnerContainer {
+			svg,
+			h4 {
+				font-size: 6px;
+			}
+		}
+	}
+}

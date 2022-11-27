@@ -1,0 +1,298 @@
+@use '../../../styles/global/media';
+@use '../../../styles/global/mixins';
+.Wrapper {
+	min-height: 80vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	background: #f5f5f5;
+	padding-bottom: 100px;
+	.PropertyHeader {
+		height: max-content;
+		width: inherit;
+		padding: 20px 8%;
+		background-color: rgb(12, 12, 12);
+		display: flex;
+		justify-content: space-between;
+		.Title_Address {
+			display: flex;
+			align-items: flex-start;
+			flex-direction: column;
+			max-width: 70%;
+			.Title {
+				color: white;
+			}
+			.Address {
+				color: #979797;
+			}
+		}
+		.Price_PricePerSquareMeter {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			flex-direction: column;
+			color: #979797;
+			.Price {
+				color: white;
+			}
+			.PricePerSquareMeter {
+				color: #979797;
+			}
+		}
+	}
+	.Main {
+		margin-top: 50px;
+		width: 100%;
+		padding: 0 8%;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		.Info {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 40px;
+			.MainImage {
+				border-radius: 2px;
+				border-top-right-radius: 35px;
+				width: 90%;
+				box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+				border: 5px solid white;
+			}
+			.AdditionalImages {
+				ul {
+					display: flex;
+					gap: 10px;
+					width: 90%;
+					overflow-x: hidden;
+					.Swiper {
+						overflow-x: hidden;
+						max-width: 50vw;
+						@include media.xl {
+							max-width: 70vw;
+						}
+						@include media.lg {
+							max-width: 80vw;
+						}
+					}
+					li {
+						img {
+							height: 100px;
+							width: 100px;
+							border-top-right-radius: 10px;
+							cursor: pointer;
+							transition: filter 0.2s ease-out;
+							&:hover {
+								filter: brightness(80%);
+							}
+							@include media.lg {
+								height: 11vw;
+								width: 11vw;
+							}
+						}
+					}
+				}
+			}
+			.Details,
+			.Description,
+			.Features {
+				background-color: white;
+				width: 90%;
+				display: flex;
+				flex-direction: column;
+				border-radius: 20px;
+				box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
+				h3 {
+					border-bottom: 1px solid #d8d8d8;
+					padding: 30px 0 30px 30px;
+				}
+			}
+			.Details {
+				ul {
+					display: grid;
+					grid-template-columns: repeat(5, 1fr);
+					align-items: center;
+					width: 100%;
+					li {
+						@include mixins.center-flex;
+						padding: 20px 10px;
+						gap: 5px;
+						font-weight: bold;
+						&:not(:last-child) {
+							border-right: 1px solid #d8d8d8;
+						}
+					}
+				}
+			}
+			.Description {
+				h3 {
+					width: 100%;
+					margin: none;
+				}
+				p {
+					padding: 30px;
+					color: rgb(112, 112, 112);
+				}
+			}
+			.Features {
+				ul {
+					padding: 30px;
+					display: grid;
+					gap: 15px 0;
+					grid-template-columns: repeat(2, 1fr);
+					li {
+						display: flex;
+						align-items: center;
+						gap: 5px;
+					}
+				}
+			}
+		}
+		.ContactToPublisher {
+			display: flex;
+			flex-direction: column;
+			background-color: white;
+			padding: 20px;
+			border-radius: 15px;
+			box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+			gap: 10px;
+			width: 34%;
+			.Publisher {
+				display: flex;
+				flex-direction: column;
+				background-color: #f5f5f5;
+				border-radius: 5px;
+				padding: 15px 20px;
+				h3,
+				h4 {
+					font-size: 16px;
+					display: flex;
+					align-items: center;
+					gap: 5px;
+					font-weight: 500;
+				}
+			}
+			input,
+			textarea {
+				font-size: 18px;
+				padding: 10px;
+				border-radius: 5px;
+				border: 1px solid #ebebeb;
+				outline: unset;
+			}
+			.SenderMessage {
+				resize: none;
+				height: 80px;
+			}
+			button {
+				padding: 15px;
+				border: none;
+				cursor: pointer;
+				background-color: rgb(43, 43, 43);
+				color: white;
+				font-weight: 500;
+				border-radius: 2px;
+				border-top-right-radius: 15px;
+				transition: background 0.2s ease-out;
+				&:hover {
+					background-color: #ffbb00;
+				}
+			}
+		}
+	}
+	.Main {
+		@include media.lg {
+			flex-direction: column;
+			.Info {
+				.MainImage {
+					width: 100%;
+					border: none;
+					border-radius: 5px;
+				}
+				align-items: center;
+				.Details,
+				.Description,
+				.Features {
+					width: 100%;
+				}
+			}
+			.ContactToPublisher {
+				width: 60%;
+				margin-top: 40px;
+				align-self: center;
+			}
+		}
+
+		@include media.sm {
+			.ContactToPublisher {
+				width: 90%;
+				margin-top: 20px;
+				input,
+				textarea {
+					font-size: 14px;
+				}
+			}
+			.Details,
+			.Description,
+			.Features {
+				h3 {
+					font-size: 18px;
+				}
+			}
+			.Details {
+				ul {
+					li {
+						font-size: 14px;
+					}
+				}
+			}
+			.Features {
+				ul {
+					li {
+						font-size: 14px;
+					}
+				}
+			}
+			.Description {
+				p {
+					font-size: 14px;
+				}
+			}
+			.AdditionalImages {
+				padding-top: 0;
+			}
+			.MainImage {
+				border-radius: 0 !important;
+			}
+			padding: 0;
+			margin: 0;
+			gap: 20px;
+		}
+	}
+	@include media.md {
+		.PropertyHeader {
+			flex-direction: column;
+			gap: 20px;
+			text-align: center;
+			.Price_PricePerSquareMeter {
+				flex-direction: unset;
+			}
+			.Title_Address {
+				max-width: unset;
+				gap: 10px;
+				.Address {
+					font-size: 14px;
+				}
+			}
+			.Title {
+				font-size: 22px;
+			}
+			.Price {
+				font-size: 22px;
+			}
+		}
+	}
+}

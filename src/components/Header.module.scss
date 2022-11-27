@@ -1,0 +1,156 @@
+@use '../styles/global/media';
+@use '../styles/global/mixins';
+
+header {
+	@include mixins.center-flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 2rem 8%;
+	background: transparent;
+	position: absolute;
+	top: 0;
+	.Logo {
+		height: 50px;
+	}
+	nav {
+		font-family: 'Noto Sans Georgian';
+		color: white;
+		font-size: 15px;
+		ul {
+			@include mixins.center-flex;
+			gap: 2vw;
+			.LoginButton {
+				background-color: #ffca37;
+				border: none;
+				font-weight: 700;
+				border-radius: 5px;
+				padding: 7px 15px;
+				transition: 0.25s ease-out;
+				box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+				&:hover {
+					cursor: pointer;
+					background-color: #2a2d38;
+					color: #ffca37;
+				}
+			}
+			li {
+				transition: color 0.25s linear, border 0.2s ease-out;
+				border-bottom: 1px solid transparent;
+				padding: 5px 0;
+				&:not(:last-child):hover {
+					cursor: pointer;
+					color: #ffc508;
+					border-color: #ffc508;
+				}
+			}
+		}
+	}
+	.HamburgerIcon {
+		display: none;
+	}
+	@include media.lg {
+		.Logo {
+			height: 40px;
+		}
+		nav {
+			font-size: 12px;
+			ul {
+				.LoginButton {
+					padding: 5px 10px;
+					font-size: 12px;
+				}
+				li {
+					padding: 4px 0;
+				}
+			}
+		}
+	}
+	@include media.md {
+		align-items: flex-start;
+	}
+	@include media.sm {
+		.HamburgerIcon {
+			display: flex;
+			z-index: 5;
+			color: white;
+			font-size: 1.8rem;
+			margin-left: 10px;
+			transition: transform 0.2s ease-out;
+			&:hover {
+				cursor: pointer;
+				transform: scale(0.8);
+			}
+		}
+		nav {
+			position: absolute;
+			background-color: rgba(0, 0, 0, 0.35);
+			backdrop-filter: blur(15px);
+			box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+			top: 0;
+			right: 0;
+			width: max-content;
+			padding: 20px;
+			z-index: 3;
+			border-bottom-left-radius: 10px;
+			transform: translateY(0);
+			transition: transform 0.4s ease-out;
+			&.active {
+				transform: translateY(-100%);
+			}
+			ul {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: unset;
+				width: 100%;
+				margin-top: 50px;
+				li {
+					border: none;
+					font-size: 13px;
+					width: 100%;
+					padding: 5px 10px;
+					button {
+						font-size: 13px !important;
+						min-width: 90%;
+					}
+				}
+				li:not(:last-child):hover {
+					background-color: rgba(0, 0, 0, 0.15);
+				}
+				li:nth-last-child(1) {
+					margin-top: 8px;
+				}
+			}
+		}
+	}
+	@include media.xs {
+		.Logo {
+			height: 36px;
+		}
+		nav {
+			padding: 20px 15px;
+			font-size: 12px;
+			backdrop-filter: blur(15px);
+			background-color: rgba(0, 0, 0, 0.55);
+			border-bottom-left-radius: 5px;
+			ul {
+				margin-top: 50px;
+				button {
+					font-size: 12px !important;
+					padding: 2px 5px;
+				}
+			}
+		}
+	}
+	@media (max-width: 320px) {
+		nav {
+			padding: 5px;
+			font-size: 8px;
+			ul {
+				button {
+					font-size: 8px !important;
+					padding: 2px 5px;
+				}
+			}
+		}
+	}
+}

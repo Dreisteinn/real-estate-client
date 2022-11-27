@@ -1,0 +1,53 @@
+.Wrapper {
+	width: 100%;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px,
+		rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	color: rgb(59, 59, 59);
+	gap: 5px;
+	transition: 0.25s linear;
+	cursor: pointer;
+
+	&:hover {
+		filter: brightness(90%);
+	}
+	h3,
+	h4 {
+		padding: 0px 20px;
+	}
+	h4 {
+		font-size: 16px;
+		color: rgb(57, 57, 121);
+	}
+	h3 {
+		font-size: 16px;
+	}
+	img {
+		border-top-left-radius: inherit;
+		border-top-right-radius: inherit;
+		width: 100%;
+		object-fit: cover;
+	}
+	.Details {
+		border-top: 1px solid lightgray;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		li {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: auto;
+			color: rgb(88, 88, 88);
+			gap: 5px;
+			width: 100%;
+			padding: 10px;
+		}
+		li:not(:last-child) {
+			border-right: 1px solid darkgray;
+		}
+	}
+}

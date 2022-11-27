@@ -1,0 +1,140 @@
+@use '../../../styles/global/media';
+.Wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: white;
+	img {
+		border-top-right-radius: 55px;
+		max-width: 45vw;
+		box-shadow: 0px 62px 54px 0px rgba(0, 0, 0, 0.3);
+		transform: translateY(10%);
+	}
+	.TextContent {
+		max-width: 44%;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		.Line {
+			height: 4px;
+			width: 170px;
+			border-radius: 2px;
+			background: linear-gradient(90deg, rgba(255, 172, 18, 1) 0%, rgba(0, 0, 0, 1) 100%);
+		}
+		h2 {
+			font-size: 28px;
+		}
+
+		p {
+			width: 70%;
+			font-size: 18px;
+		}
+	}
+	@include media.lg {
+		.TextContent {
+			max-width: 45%;
+			h2 {
+				font-size: 24px;
+			}
+			p {
+				font-size: 14px;
+				width: 90%;
+			}
+		}
+	}
+	@include media.md {
+		flex-direction: column;
+		padding-bottom: 50px;
+		margin-top: 20px;
+		gap: 30px;
+		width: 100%;
+		img {
+			transform: unset;
+			min-width: 70%;
+			box-shadow: 0px 25px 20px 0px rgba(0, 0, 0, 0.3);
+			border-radius: 0 40px 0 40px;
+		}
+		.TextContent {
+			min-width: 90%;
+			justify-content: center;
+			align-items: center;
+			.Line {
+				width: 90%;
+			}
+			gap: 10px;
+			h2 {
+				font-size: 22px;
+				text-align: center;
+				width: 90%;
+			}
+			p {
+				font-size: 15px;
+			}
+		}
+	}
+}
+
+.SecondPromo {
+	background: rgb(39, 26, 0);
+	background: linear-gradient(225deg, rgba(39, 26, 0, 1) 19%, rgba(0, 0, 0, 1) 100%);
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 30px;
+	padding: 100px 0;
+	p {
+		max-width: 40%;
+	}
+	h2 {
+		font-size: 30px;
+	}
+	.SecondLine {
+		height: 4px;
+		width: 170px;
+		border-radius: 2px;
+		background: linear-gradient(90deg, rgba(255, 172, 18, 1) 0%, rgba(0, 0, 0, 0) 100%);
+	}
+	button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 5px;
+		padding: 15px 30px;
+		font-size: 16px;
+		font-weight: bold;
+		cursor: pointer;
+		border: none;
+
+		svg {
+			font-size: 20px;
+		}
+		border-top-right-radius: 15px;
+		background-color: #ffac12;
+		transition: 0.2s linear;
+		&:hover {
+			background-color: #fa8f03;
+		}
+	}
+	@include media.lg {
+		h2 {
+			font-size: 22px;
+			text-align: center;
+		}
+		p {
+			min-width: 70%;
+		}
+		button {
+			padding: 10px 20px;
+			font-size: 14px;
+		}
+	}
+	@include media.sm {
+		p {
+			min-width: 84%;
+			font-size: 14px;
+		}
+	}
+}

@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Noto+Sans+Georgian:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap');
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Noto Sans Georgian';
+}
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+.App {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	overflow-x: hidden;
+}
+body {
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: rgb(34, 34, 34);
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 20px;
+		background-color: #505050;
+		&:hover {
+			background-color: #414141;
+		}
+	}
+}
+.swiper {
+	border-radius: 5px;
+	padding: 10px 0 20px 0;
+}
