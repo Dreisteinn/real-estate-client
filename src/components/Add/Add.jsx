@@ -12,12 +12,12 @@ import Upload from './Upload';
 const Add = (e) => {
 	const [isResetted, setIsResetted] = useState(false);
 	const { property, setProperty } = useNewPostCtx();
-	const baseUrl = 'https://real-estate-drainerr.onrender.com';
+	const url = process.env.REACT_APP_API_URL;
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setIsResetted(false);
 		try {
-			fetch(`${baseUrl}/api/properties`, {
+			const res = await fetch(`${url}/api/properties`, {
 				method: 'POST',
 				body: JSON.stringify(property),
 				headers: {
@@ -27,6 +27,7 @@ const Add = (e) => {
 			setProperty(initStateOfProperty);
 			e.target.reset();
 			setIsResetted(true);
+			console.log(await res.json());
 		} catch (e) {
 			console.log(e.message);
 		}

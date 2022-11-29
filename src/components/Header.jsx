@@ -7,12 +7,15 @@ import usePropertiesCtx from '../store/propertiesContext';
 import { getResettedFilters } from '../helpers';
 import { RiUser3Fill } from 'react-icons/ri';
 import { useAuthCtx } from '../store/authContext';
+import useLogout from '../hooks/useLogout';
+
 const Header = () => {
 	const [showNav, setShowNav] = useState(false);
 	const navigate = useNavigate();
 	const location = useLocation().pathname;
 	const { setFilters } = usePropertiesCtx();
-	const { user } = useAuthCtx();
+	const { user } = useAuthCtx().state;
+	const logout = useLogout();
 	const headerStyles = {
 		position: 'relative',
 		background: 'linear-gradient(225deg, rgba(39,26,0,1) 0%, rgba(0,0,0,1) 100%)',
@@ -51,8 +54,8 @@ const Header = () => {
 					</li>
 					<li onClick={() => setShowNav(false)}>
 						{user ? (
-							<button>
-								<RiUser3Fill /> {user.displayName}
+							<button className={styles.LoginButton} onClick={() => logout()}>
+								<RiUser3Fill /> გასვლა
 							</button>
 						) : (
 							<button className={styles.LoginButton} onClick={handleClick}>

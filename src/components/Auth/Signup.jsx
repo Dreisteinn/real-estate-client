@@ -5,21 +5,20 @@ import { FiMail } from 'react-icons/fi';
 import { VscKey } from 'react-icons/vsc';
 import { TbLetterF, TbLetterL } from 'react-icons/tb';
 import { getFullName } from '../../helpers';
+import useSignUp from '../../hooks/useSignUp';
 
 const Signup = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [comparablePassword, setComparablePassword] = useState('');
 	const [name, setName] = useState({ firstname: '', lastname: '' });
-	const [error, setError] = useState(null);
+	const { signup, loading, error } = useSignUp();
 	const navigate = useNavigate();
-	const handleSignUp = (e) => {
+
+	const handleSignUp = async (e) => {
 		e.preventDefault();
 		const fullname = getFullName(name.firstname, name.lastname);
-		if (comparablePassword && comparablePassword === password) {
-			//do something
-		} else {
-			setError('პაროლები უნდა ემთხვეოდეს და იყოს შემდგარი მინიმუმ 6 სიმბოლოსგან!');
+		if (password) {
+			await signup(email, password, fullname);
 		}
 	};
 
@@ -27,6 +26,7 @@ const Signup = () => {
 		<div className={styles.Wrapper}>
 			<form onSubmit={handleSignUp}>
 				<h1>რეგისტრაცია</h1>
+				{error && <p className={styles.FormError}>{error}</p>}
 				<div className={styles.NameWrapper}>
 					<TbLetterF />
 					<input
@@ -60,18 +60,14 @@ const Signup = () => {
 						onChange={(e) => setPassword(e.target.value)}
 					/>
 				</div>
-				<div className={styles.PasswordWrapper}>
-					<VscKey />
-					<input
-						type='password'
-						value={comparablePassword}
-						placeholder='გაიმეორეთ პაროლი'
-						onChange={(e) => setComparablePassword(e.target.value)}
-					/>
-				</div>
 				<button>რეგისტრაცია</button>
-				<input type='button' value='შესვლა' className={styles.SignupBtn} onClick={() => navigate('/login')} />
-				<p style={{ color: 'red', fontSize: 'calc(10px + .5vw)', maxWidth: '70%' }}>{error}</p>
+				<input
+					type='button'
+					value='შესვლა'
+					className={styles.SignupBtn}
+					onClick={() => navigate('/login')}
+					disabled={loading}
+				/>
 			</form>
 		</div>
 	);

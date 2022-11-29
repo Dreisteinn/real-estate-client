@@ -13,10 +13,7 @@ const initStateOfProperty = {
 		garage: undefined,
 	},
 	publisher: {
-		name: {
-			first: '',
-			last: '',
-		},
+		name: '',
 		number: '',
 	},
 	features: {

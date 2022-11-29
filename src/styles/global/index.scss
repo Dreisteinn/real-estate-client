@@ -34,7 +34,7 @@ body {
 		border-radius: 20px;
 		background-color: #505050;
 		&:hover {
-			background-color: #414141;
+			background-color: #ffca37;
 		}
 	}
 }
@@ -45,10 +45,3 @@ body {
 .swiper-wrapper {
 	width: 100vw;
 }
-// @media (max-width: 960px) {
-// 	.swiper-slide,
-// 	.swiper-slide-next,
-// 	.swiper-slide-active {
-// 		margin-right: 0 !important;
-// 	}
-// }
