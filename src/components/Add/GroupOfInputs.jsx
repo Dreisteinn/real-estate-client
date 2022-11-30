@@ -17,7 +17,7 @@ const GroupOfInputs = () => {
 				}
 			/>
 			<TextInput
-				placeholder='ფასი (₾)'
+				placeholder='ზუსტი ფასი (₾) ან 0'
 				setState={(e) =>
 					setProperty((prev) => {
 						return { ...prev, price: e.target.value };

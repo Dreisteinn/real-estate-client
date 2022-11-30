@@ -7,12 +7,15 @@ import { GrAddCircle } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 import useLogout from '../../hooks/useLogout';
 import Card from '../Home/Listing/Card';
-import data from '../../data';
+import useFetchUserPosts from '../../hooks/useFetchUserPosts';
 
 const UserPosts = () => {
 	const { user } = useAuthCtx().state;
 	const logout = useLogout();
 	const navigate = useNavigate();
+	const { posts } = useFetchUserPosts();
+	const data = posts;
+	console.log(data);
 
 	if (!user) {
 		return <Navigate to='/login' />;

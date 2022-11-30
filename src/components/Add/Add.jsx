@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import useFetchUserPosts from '../../hooks/useFetchUserPosts';
 import { useAuthCtx } from '../../store/authContext';
 import initStateOfProperty from '../../store/initStateOfProperty';
 import { useNewPostCtx } from '../../store/newPostContextProvider';
+import usePropertiesCtx from '../../store/propertiesContext';
 import styles from './Add.module.scss';
 import Description from './Description';
 import Details from './Details';
@@ -9,14 +12,18 @@ import DropDowns from './DropDowns';
 import Features from './Features';
 import GroupOfInputs from './GroupOfInputs';
 import Upload from './Upload';
+import { useNavigate } from 'react-router-dom';
 
 const Add = (e) => {
 	const [isResetted, setIsResetted] = useState(false);
 	const { property, setProperty } = useNewPostCtx();
 	const [error, setError] = useState(null);
-	// const url = process.env.REACT_APP_API_URL;
-	const url = 'http://localhost:3001';
+	const url = process.env.REACT_APP_API_URL;
 	const { user } = useAuthCtx().state;
+	const { setProperties } = usePropertiesCtx();
+	const { setPosts: setUserPosts } = useFetchUserPosts();
+	const navigate = useNavigate();
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setIsResetted(false);
@@ -34,8 +41,11 @@ const Add = (e) => {
 			const resData = await res.json();
 			if (res.ok) {
 				setProperty(initStateOfProperty);
+				setProperties((prev) => [...prev, resData]);
+				setUserPosts((prev) => [...prev, resData]);
 				e.target.reset();
 				setIsResetted(true);
+				navigate('/my-posts');
 			} else {
 				setError('დარწმუნდით რომ ყველა ველი შევსებული გაქვთ!');
 				console.log(resData.error);

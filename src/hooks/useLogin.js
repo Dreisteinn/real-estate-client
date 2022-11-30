@@ -9,8 +9,7 @@ const useLogin = () => {
 	const login = async (email, password) => {
 		setLoading(true);
 		setError(null);
-		// const url = process.env.REACT_APP_API_URL;
-		const url = 'http://localhost:3001';
+		const url = process.env.REACT_APP_API_URL;
 		const response = await fetch(`${url}/api/user/login`, {
 			method: 'POST',
 			body: JSON.stringify({ email, password }),

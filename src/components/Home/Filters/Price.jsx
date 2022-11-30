@@ -6,8 +6,9 @@ import usePropertiesCtx from '../../../store/propertiesContext';
 import { getHighestPrice } from '../../../helpers';
 
 const Price = () => {
+	const { properties } = usePropertiesCtx();
 	const [minPrice, setMinPrice] = useState(0);
-	const [maxPrice, setMaxPrice] = useState(getHighestPrice());
+	const [maxPrice, setMaxPrice] = useState(getHighestPrice(properties));
 	const [showPrice, setShowPrice] = useState(false);
 	const priceRef = useRef();
 	const { setFilters } = usePropertiesCtx();

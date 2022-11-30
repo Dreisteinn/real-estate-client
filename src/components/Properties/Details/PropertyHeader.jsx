@@ -12,7 +12,7 @@ const PropertyDetailsHeader = ({ data }) => {
 				<h4 className={styles.Address}>{address}</h4>
 			</div>
 			<div className={styles.Price_Area}>
-				<h2 className={styles.Price}>{price ? `${price.toLocaleString()}₾` : 'ფასი ზუსტდება'}</h2>
+				<h2 className={styles.Price}>{price > 0 ? `${price.toLocaleString()}₾` : 'ფასი ზუსტდება'}</h2>
 				<h4 className={styles.Area}>
 					{area}მ<sup>2</sup>
 				</h4>

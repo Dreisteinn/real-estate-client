@@ -4,7 +4,7 @@ import logo from '../images/Logo.svg';
 import { RiMenuLine } from 'react-icons/ri';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import usePropertiesCtx from '../store/propertiesContext';
-import { getResettedFilters } from '../helpers';
+import { getHighestPrice, getResettedFilters } from '../helpers';
 import { RiUser3Fill } from 'react-icons/ri';
 import { useAuthCtx } from '../store/authContext';
 
@@ -14,6 +14,7 @@ const Header = () => {
 	const location = useLocation().pathname;
 	const { setFilters } = usePropertiesCtx();
 	const { user } = useAuthCtx().state;
+	const { properties } = usePropertiesCtx();
 	const headerStyles = {
 		position: 'relative',
 		background: 'linear-gradient(225deg, rgba(39,26,0,1) 0%, rgba(0,0,0,1) 100%)',
@@ -26,7 +27,8 @@ const Header = () => {
 	};
 
 	const resetFilters = () => {
-		const resettedFilters = getResettedFilters();
+		const highestPrice = getHighestPrice(properties);
+		const resettedFilters = getResettedFilters(highestPrice);
 		setFilters(resettedFilters);
 	};
 

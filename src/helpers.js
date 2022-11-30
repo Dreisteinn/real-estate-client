@@ -1,34 +1,32 @@
-import properties from './data';
-
 export const getTitle = (location, transactionType, propertyType) => {
 	const modifiedLocationName =
 		location[location.length - 1] === 'ი' ? location.substring(0, location.length - 1) + 'ში' : location + 'ში';
 	return `${transactionType} ${propertyType} ${modifiedLocationName}`;
 };
 
-export const getResettedFilters = () => {
+export const getResettedFilters = (highestPrice) => {
 	return {
 		propertyType: '',
 		transactionType: '',
 		location: '',
 		price: {
 			min: 0,
-			max: getHighestPrice(),
+			max: highestPrice,
 		},
 	};
 };
 
-export const getHighestPrice = () => {
+export const getHighestPrice = (properties) => {
 	return Math.max(...properties.map((property) => property.price));
 };
 
-export const getInitState = (filters) => {
+export const getInitState = (filters, highestPrice) => {
 	return (
 		filters.propertyType === '' &&
 		filters.transactionType === '' &&
 		filters.location === '' &&
 		filters.price.min === 0 &&
-		filters.price.max === getHighestPrice()
+		filters.price.max === highestPrice
 	);
 };
 

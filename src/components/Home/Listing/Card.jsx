@@ -17,7 +17,7 @@ const Card = ({ data }) => {
 			<div className={styles.Wrapper}>
 				<img src={posterImage} alt='Property' />
 				<h3>{title}</h3>
-				<h4>{price ? `${price.toLocaleString()}₾` : 'ფასი ზუსტდება'}</h4>
+				<h4>{price > 0 ? `${price.toLocaleString()}₾` : 'ფასი ზუსტდება'}</h4>
 				<ul className={styles.Details}>
 					<li>
 						<AiFillCar /> {parking}
