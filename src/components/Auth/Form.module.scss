@@ -25,7 +25,8 @@ $borderRadius: 10px;
 		}
 		.EmailWrapper,
 		.NameWrapper,
-		.PasswordWrapper {
+		.PasswordWrapper,
+		.NumberWrapper {
 			@include mixins.center-flex;
 			width: $inputWidth;
 			border: 1px solid gray;

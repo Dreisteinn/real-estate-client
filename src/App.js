@@ -9,8 +9,11 @@ import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Property from './components/Properties/Details/Property';
 import Add from './components/Add/Add';
+import { useAuthCtx } from './store/authContext';
+import UserPosts from './components/UserPosts/UserPosts';
 
 function App() {
+	const { user } = useAuthCtx().state;
 	return (
 		<div className='App'>
 			<Header />
@@ -20,9 +23,10 @@ function App() {
 				<Route path='/properties/:id' element={<Property />} />
 				<Route path='/contact' element={<Contact />} />
 				<Route path='/about' element={<About />} />
-				<Route path='/login' element={<Login />} />
-				<Route path='/signup' element={<Signup />} />
-				<Route path='/add' element={<Add />} />
+				{!user && <Route path='/login' element={<Login />} />}
+				{!user && <Route path='/signup' element={<Signup />} />}
+				<Route path='/my-posts' element={<UserPosts />} />
+				{user && <Route path='/add' element={<Add />} />}
 				<Route path='*' element={<Navigate to='/' />} />
 			</Routes>
 			<Footer />

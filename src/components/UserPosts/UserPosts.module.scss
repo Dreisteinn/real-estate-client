@@ -1,0 +1,56 @@
+.Wrapper {
+	min-height: 80vh;
+	padding: 50px 2%;
+	background: #f5f5f5;
+	position: relative;
+	.Heading {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 20px;
+
+		svg {
+			font-size: 20px;
+			cursor: pointer;
+			border-radius: 50%;
+			transition: transform 0.2s linear;
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+	}
+	.LogoutButton {
+		cursor: pointer;
+		transition: 0.2s linear;
+		gap: 5px;
+		padding: 7px 15px;
+		border: none;
+		margin-left: 5px;
+		border-radius: 5px;
+		color: #2a2d38;
+		background-color: #ffca37;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		font-size: calc(10px + 0.3vw);
+		font-weight: 700;
+		box-shadow: rgb(0 0 0 / 10%) 0px 0px 5px 0px, rgb(0 0 0 / 10%) 0px 0px 1px 0px;
+		&:hover {
+			color: white;
+			background-color: crimson;
+		}
+	}
+
+	.Posts {
+		margin-top: 100px;
+		width: 100%;
+		.Properties {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+			gap: 10px;
+		}
+	}
+}

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FiMail } from 'react-icons/fi';
 import { VscKey } from 'react-icons/vsc';
 import { TbLetterF, TbLetterL } from 'react-icons/tb';
+import { BsTelephone } from 'react-icons/bs';
 import { getFullName } from '../../helpers';
 import useSignUp from '../../hooks/useSignUp';
 
@@ -11,15 +12,15 @@ const Signup = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [name, setName] = useState({ firstname: '', lastname: '' });
+	const [number, setNumber] = useState('');
+
 	const { signup, loading, error } = useSignUp();
 	const navigate = useNavigate();
 
 	const handleSignUp = async (e) => {
 		e.preventDefault();
 		const fullname = getFullName(name.firstname, name.lastname);
-		if (password) {
-			await signup(email, password, fullname);
-		}
+		await signup(email, password, fullname, number);
 	};
 
 	return (
@@ -46,6 +47,10 @@ const Signup = () => {
 						placeholder='გვარი'
 						onChange={(e) => setName({ ...name, lastname: e.target.value })}
 					/>
+				</div>
+				<div className={styles.NumberWrapper}>
+					<BsTelephone />
+					<input type='text' value={number} placeholder='ტელ.ნომერი' onChange={(e) => setNumber(e.target.value)} />
 				</div>
 				<div className={styles.EmailWrapper}>
 					<FiMail />

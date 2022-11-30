@@ -9,16 +9,17 @@ const useLogin = () => {
 	const login = async (email, password) => {
 		setLoading(true);
 		setError(null);
-
-		const url = process.env.REACT_APP_API_URL;
+		// const url = process.env.REACT_APP_API_URL;
+		const url = 'http://localhost:3001';
 		const response = await fetch(`${url}/api/user/login`, {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application:/json',
-			},
 			body: JSON.stringify({ email, password }),
+			headers: {
+				'Content-Type': 'application/json',
+			},
 		});
 		const json = await response.json();
+		console.log(json);
 		if (!response.ok) {
 			setError(json.error);
 			setLoading(false);

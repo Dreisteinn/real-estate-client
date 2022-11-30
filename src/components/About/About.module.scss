@@ -5,7 +5,7 @@
 	min-height: 80vh;
 	width: 100%;
 	@include mixins.center-flex;
-	margin: 100px 0;
+	margin: 100px 0 150px 0;
 	flex-direction: column;
 	.InnerContainer {
 		display: flex;
