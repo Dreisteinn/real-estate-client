@@ -53,3 +53,9 @@ export const getArrayFilledWithImages = (selectedImages) => {
 
 	return arr;
 };
+
+export const getFormattedNumber = (num) => {
+	const str = String(num).replaceAll(' ', '');
+	const parsed = parseInt(str);
+	return parsed;
+};

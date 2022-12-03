@@ -48,6 +48,7 @@ const Add = (e) => {
 			} else {
 				setError('დარწმუნდით რომ ყველა ველი შევსებული გაქვთ!');
 			}
+			console.log(resData);
 		}
 	};
 

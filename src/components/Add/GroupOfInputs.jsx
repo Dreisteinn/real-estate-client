@@ -2,6 +2,7 @@ import React from 'react';
 import TextInput from './Reusable/TextInput';
 import styles from './Add.module.scss';
 import { useNewPostCtx } from '../../store/newPostContextProvider';
+import { getFormattedNumber } from '../../helpers';
 
 const GroupOfInputs = () => {
 	const { setProperty } = useNewPostCtx();
@@ -20,7 +21,7 @@ const GroupOfInputs = () => {
 				placeholder='ზუსტი ფასი (₾) ან 0'
 				setState={(e) =>
 					setProperty((prev) => {
-						return { ...prev, price: e.target.value };
+						return { ...prev, price: getFormattedNumber(e.target.value) };
 					})
 				}
 			/>
@@ -28,7 +29,7 @@ const GroupOfInputs = () => {
 				placeholder='ფართობი (მ²)'
 				setState={(e) =>
 					setProperty((prev) => {
-						return { ...prev, area: e.target.value };
+						return { ...prev, area: getFormattedNumber(e.target.value) };
 					})
 				}
 			/>
