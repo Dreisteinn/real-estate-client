@@ -4,6 +4,7 @@
 - Express
 - React
 - Node 
-- Sass Modules
+- Cloudinary
+- Sass 
 - SwiperJS
 ### Server: https://github.com/drainerr/real-estate-server
