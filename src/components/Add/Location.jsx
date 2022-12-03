@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import DropDown from './Reusable/DropDown';
 import styles from './Add.module.scss';
 import { AiOutlineSearch } from 'react-icons/ai';
+import usePropertiesCtx from '../../store/propertiesContext';
 
 const locations = [
 	'თბილისი',
@@ -22,6 +23,9 @@ const Location = ({ setProperty }) => {
 	const handleClick = (e) => {
 		e.preventDefault();
 		setLocation(inputRef.current.value);
+		setProperty((prev) => {
+			return { ...prev, location: inputRef.current.value };
+		});
 	};
 	return (
 		<DropDown
