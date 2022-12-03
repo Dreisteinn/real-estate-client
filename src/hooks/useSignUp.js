@@ -9,7 +9,6 @@ const useSignUp = () => {
 	const signup = async (email, password, name, number) => {
 		setLoading(true);
 		setError(null);
-		console.log(email, password, name, number);
 
 		const url = process.env.REACT_APP_API_URL;
 		const response = await fetch(`${url}/api/user/signup`, {
@@ -18,7 +17,6 @@ const useSignUp = () => {
 			body: JSON.stringify({ email, password, name, number }),
 		});
 		const json = await response.json();
-		console.log(json);
 		if (!response.ok) {
 			setError(json.error);
 			setLoading(false);

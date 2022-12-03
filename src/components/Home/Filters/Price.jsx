@@ -8,7 +8,7 @@ import { getHighestPrice } from '../../../helpers';
 const Price = () => {
 	const { properties } = usePropertiesCtx();
 	const [minPrice, setMinPrice] = useState(0);
-	const [maxPrice, setMaxPrice] = useState(getHighestPrice(properties));
+	const [maxPrice, setMaxPrice] = useState(0);
 	const [showPrice, setShowPrice] = useState(false);
 	const priceRef = useRef();
 	const { setFilters } = usePropertiesCtx();
@@ -49,7 +49,7 @@ const Price = () => {
 			<div className={styles.Filter} onClick={() => setShowPrice((prev) => !prev)}>
 				<h4>ფასი</h4>
 				<div className={styles.Select}>
-					<h4>{`${minPrice || 0}₾ - ${maxPrice || 0}₾`}</h4>
+					<h4>{minPrice && maxPrice ? `${minPrice}₾ - ${maxPrice}₾` : 'განსაზღვრეთ'}</h4>
 					{showPrice ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
 				</div>
 			</div>
@@ -59,15 +59,9 @@ const Price = () => {
 					<input
 						type='text'
 						placeholder='მინ.ფასი (₾)'
-						value={minPrice}
 						onChange={(e) => setMinPrice(parseInt(e.target.value) || 0)}
 					/>
-					<input
-						type='text'
-						placeholder='მაქს.ფასი (₾)'
-						value={maxPrice}
-						onChange={(e) => handleSettingMaxPrice(e.target)}
-					/>
+					<input type='text' placeholder='მაქს.ფასი (₾)' onChange={(e) => handleSettingMaxPrice(e.target)} />
 				</div>
 			</div>
 		</div>

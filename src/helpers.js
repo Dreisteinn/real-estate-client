@@ -4,14 +4,14 @@ export const getTitle = (location, transactionType, propertyType) => {
 	return `${transactionType} ${propertyType} ${modifiedLocationName}`;
 };
 
-export const getResettedFilters = (highestPrice) => {
+export const getResettedFilters = () => {
 	return {
 		propertyType: '',
 		transactionType: '',
 		location: '',
 		price: {
 			min: 0,
-			max: highestPrice,
+			max: 0,
 		},
 	};
 };
@@ -20,13 +20,13 @@ export const getHighestPrice = (properties) => {
 	return Math.max(...properties.map((property) => property.price));
 };
 
-export const getInitState = (filters, highestPrice) => {
+export const getInitState = (filters) => {
 	return (
 		filters.propertyType === '' &&
 		filters.transactionType === '' &&
 		filters.location === '' &&
 		filters.price.min === 0 &&
-		filters.price.max === highestPrice
+		filters.price.max === 0
 	);
 };
 

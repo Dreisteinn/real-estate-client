@@ -15,6 +15,7 @@ const Home = () => {
 	const { properties } = usePropertiesCtx();
 	const highestPrice = getHighestPrice(properties);
 	const initState = getInitState(filters, highestPrice);
+
 	return (
 		<div className={styles.HomeWrapper}>
 			<div className={styles.HeroWrapper}>

@@ -14,6 +14,7 @@ import UserPosts from './components/UserPosts/UserPosts';
 
 function App() {
 	const { user } = useAuthCtx().state;
+
 	return (
 		<div className='App'>
 			<Header />

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import useFetchUserPosts from '../../hooks/useFetchUserPosts';
 import { useAuthCtx } from '../../store/authContext';
 import initStateOfProperty from '../../store/initStateOfProperty';
@@ -48,10 +47,7 @@ const Add = (e) => {
 				navigate('/my-posts');
 			} else {
 				setError('დარწმუნდით რომ ყველა ველი შევსებული გაქვთ!');
-				console.log(resData.error);
 			}
-
-			console.log(resData);
 		}
 	};
 

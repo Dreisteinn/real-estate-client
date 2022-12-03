@@ -15,7 +15,6 @@ const UserPosts = () => {
 	const navigate = useNavigate();
 	const { posts } = useFetchUserPosts();
 	const data = posts;
-	console.log(data);
 
 	if (!user) {
 		return <Navigate to='/login' />;
@@ -30,6 +29,7 @@ const UserPosts = () => {
 					გასვლა <IoMdLogOut />
 				</button>
 				<div className={styles.Posts}>
+					{data.length < 1 && <h3>არაფერი მოიძებნა</h3>}
 					<ul className={styles.Properties}>
 						{data.map((post, i) => {
 							return <Card key={i} data={post} />;
