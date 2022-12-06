@@ -5,10 +5,10 @@ import Location from './Location';
 import styles from './Add.module.scss';
 
 const DropDowns = () => {
-	const { setProperty, property } = useNewPostCtx();
+	const { setProperty } = useNewPostCtx();
 	const transactionTypes = ['იყიდება', 'ქირავდება', 'გირავდება', 'ქირავდება დღიურად'];
-	const propertyTypes = ['ბინა', 'სახლი და აგარაკი', 'კომერციული ფართი', 'სასტუმრო'];
-	console.log(property);
+	const propertyTypes = ['ბინა', 'კერძო სახლი', 'კომერციული ფართი', 'სასტუმრო'];
+
 	return (
 		<div className={styles.DropDownsContainer}>
 			<DropDown

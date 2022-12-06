@@ -16,6 +16,7 @@ const Properties = () => {
 			<div className={styles.SearchWrapper}>
 				<Search />
 			</div>
+
 			{initState ? (
 				<ul className={styles.List}>
 					{properties.map((property, i) => {

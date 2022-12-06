@@ -3,12 +3,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 import styles from '../Search.module.scss';
 import usePropertiesCtx from '../../../store/propertiesContext';
-import { getHighestPrice } from '../../../helpers';
 
 const Price = () => {
-	const { properties } = usePropertiesCtx();
-	const [minPrice, setMinPrice] = useState(0);
-	const [maxPrice, setMaxPrice] = useState(0);
+	const { filters } = usePropertiesCtx();
+	const [minPrice, setMinPrice] = useState(filters.price.min);
+	const [maxPrice, setMaxPrice] = useState(filters.price.max);
 	const [showPrice, setShowPrice] = useState(false);
 	const priceRef = useRef();
 	const { setFilters } = usePropertiesCtx();

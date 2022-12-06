@@ -22,6 +22,10 @@
 			transform: unset;
 		}
 	}
+	& > ul {
+		padding: 0 2%;
+		margin-top: -20px;
+	}
 
 	.List {
 		display: grid;
@@ -29,6 +33,7 @@
 		justify-items: center;
 		gap: 20px;
 		max-width: 96%;
+		padding: 0;
 		@include media.md {
 			gap: 20px;
 			grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));

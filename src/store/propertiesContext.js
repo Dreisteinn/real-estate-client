@@ -6,7 +6,7 @@ const PropertiesCtx = createContext();
 
 export const PropertiesContextProvider = ({ children }) => {
 	const [properties, setProperties] = useState([]);
-	const initState = getResettedFilters(getHighestPrice(properties));
+	const initState = getResettedFilters();
 	const [filters, setFilters] = useState(initState);
 
 	useEffect(() => {
@@ -15,6 +15,9 @@ export const PropertiesContextProvider = ({ children }) => {
 			const response = await fetch(`${url}/api/properties`);
 			const data = await response.json();
 			setProperties(data);
+			setFilters((prev) => {
+				return { ...prev, price: { min: 0, max: getHighestPrice(data) } };
+			});
 		};
 		getProperties();
 	}, []);

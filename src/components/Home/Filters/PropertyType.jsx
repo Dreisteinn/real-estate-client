@@ -33,7 +33,7 @@ const PropertyType = () => {
 				<span>უძრავი ქონების ტიპი</span>
 				<ul className={styles.PropertyType}>
 					<li onClick={(e) => handleSelect(e.target.innerText)}>ბინა</li>
-					<li onClick={(e) => handleSelect(e.target.innerText)}>სახლი და აგარაკი</li>
+					<li onClick={(e) => handleSelect(e.target.innerText)}>კერძო სახლი</li>
 					<li onClick={(e) => handleSelect(e.target.innerText)}>კომერციული ფართი</li>
 					<li onClick={(e) => handleSelect(e.target.innerText)}>სასტუმრო</li>
 				</ul>
