@@ -3,6 +3,12 @@
 	padding: 50px 2%;
 	background: #f5f5f5;
 	position: relative;
+	// loading spinner
+	& > span {
+		display: flex !important;
+		justify-content: center;
+		margin-top: 100px;
+	}
 	.Heading {
 		display: flex;
 		justify-content: center;

@@ -2,6 +2,12 @@
 @use '../../styles/global/media';
 .HomeWrapper {
 	height: 100%;
+	// loading spinner
+	& > span {
+		display: flex !important;
+		justify-content: center;
+		margin: 100px 0 200px 0;
+	}
 	.HeroWrapper {
 		width: 100%;
 		min-height: 45vw;

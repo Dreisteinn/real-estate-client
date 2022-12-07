@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../Listing/Card';
 import styles from './FilteredProperties.module.scss';
 import usePropertiesCtx from '../../../store/propertiesContext';
-import { PuffLoader } from 'react-spinners';
+import { BeatLoader } from 'react-spinners';
 
 const FilteredProperties = () => {
 	const { properties, filters, loading } = usePropertiesCtx();
@@ -16,7 +16,7 @@ const FilteredProperties = () => {
 			property.price <= filters.price.max
 	);
 	if (loading) {
-		return <PuffLoader size={150} color='rgba(228, 189, 19, 1)' loading={loading} />;
+		return <BeatLoader size={15} color='#252850' loading={loading} />;
 	} else {
 		return (
 			<ul className={styles.Wrapper}>

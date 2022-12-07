@@ -1,13 +1,13 @@
 import React from 'react';
 import Card from '../Home/Listing/Card';
 import styles from './UserPosts.module.scss';
-import { PuffLoader } from 'react-spinners';
+import { BeatLoader } from 'react-spinners';
 import usePropertiesCtx from '../../store/propertiesContext';
 
 const Posts = ({ data }) => {
 	const { loading } = usePropertiesCtx();
 	if (loading) {
-		return <PuffLoader size={150} color='rgba(228, 189, 19, 1)' loading={loading} />;
+		return <BeatLoader size={15} color='#252850' loading={loading} />;
 	} else {
 		return (
 			<div className={styles.Posts}>
