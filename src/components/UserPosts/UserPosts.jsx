@@ -6,9 +6,9 @@ import { IoMdLogOut } from 'react-icons/io';
 import { GrAddCircle } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 import useLogout from '../../hooks/useLogout';
-import Card from '../Home/Listing/Card';
 import useFetchUserPosts from '../../hooks/useFetchUserPosts';
-import { delay, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import Posts from './Posts';
 
 const UserPosts = () => {
 	const { user } = useAuthCtx().state;
@@ -34,14 +34,7 @@ const UserPosts = () => {
 				<button className={styles.LogoutButton} onClick={() => logout()}>
 					გასვლა <IoMdLogOut />
 				</button>
-				<div className={styles.Posts}>
-					{data.length < 1 && <h3>არაფერი მოიძებნა</h3>}
-					<ul className={styles.Properties}>
-						{data.map((post, i) => {
-							return <Card key={i} data={post} />;
-						})}
-					</ul>
-				</div>
+				<Posts data={data} />
 			</motion.div>
 		);
 	}
