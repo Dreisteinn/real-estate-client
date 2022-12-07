@@ -1,10 +1,64 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './Property.module.scss';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { MdPhoneAndroid } from 'react-icons/md';
+import { useAuthCtx } from '../../../store/authContext';
+import { useNavigate } from 'react-router-dom';
+import { BeatLoader } from 'react-spinners';
 
 const Contact = ({ data }) => {
 	const { name, number } = data.publisher;
+	const [errorMessage, setErrorMessage] = useState(null);
+	const [loading, setLoading] = useState(false);
+	const { user } = useAuthCtx().state;
+	const navigate = useNavigate();
+	const textAreaRef = useRef();
+	const subjectRef = useRef();
+
+	const handleSend = async (event) => {
+		const form = event.target;
+		event.preventDefault();
+		if (!user) {
+			navigate('/login');
+			return;
+		}
+		setErrorMessage(null);
+		const text = textAreaRef.current.value;
+		const subject = subjectRef.current.value;
+		const { email, number, name, id } = user;
+		const url = process.env.REACT_APP_API_URL;
+		const message = {
+			text,
+			subject,
+			from: {
+				email,
+				number,
+				name,
+				id,
+			},
+			to: data.publisher_id,
+		};
+
+		if (text && subject) {
+			setLoading(true);
+			const res = await fetch(`${url}/api/user/messages`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${user.token}`,
+				},
+				body: JSON.stringify(message),
+			});
+			setLoading(false);
+			if (!res.ok) {
+				setErrorMessage(res.json().message);
+			}
+			form.reset();
+			console.log(await res.json());
+		} else {
+			setErrorMessage('ყველა ველი უნდა იყოს შევსებული');
+		}
+	};
 	return (
 		<div className={styles.ContactToPublisher}>
 			<div className={styles.Publisher}>
@@ -16,11 +70,15 @@ const Contact = ({ data }) => {
 					{number}
 				</h4>
 			</div>
-			<input className={styles.SenderName} placeholder='სახელი'></input>
-			<input className={styles.SenderPhone} placeholder='ტელეფონი'></input>
-			<input className={styles.SenderEmail} placeholder='ელ-ფოსტა'></input>
-			<textarea className={styles.SenderMessage} placeholder='ტექსტი'></textarea>
-			<button>გაგზავნა</button>
+			{loading && <BeatLoader size={10} color='#252850' loading={loading} />}
+			{errorMessage && <p style={{ padding: '5px 15px', fontWeight: '600', color: ' red' }}>{errorMessage}</p>}
+			<form onSubmit={(e) => handleSend(e)}>
+				<input ref={subjectRef} required className={styles.Subject} placeholder='საკითხი'></input>
+				<textarea ref={textAreaRef} required className={styles.SenderMessage} placeholder='შეტყობინება'></textarea>
+				<button type='submit' onClick={() => handleSend()}>
+					გაგზავნა
+				</button>
+			</form>
 		</div>
 	);
 };

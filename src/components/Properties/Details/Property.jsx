@@ -13,6 +13,7 @@ const Property = () => {
 	const { id } = useParams();
 	const property = usePropertiesCtx().properties.find((property) => property.id.toString() === id);
 	const [mainImage, setMainImage] = useState(null);
+
 	if (property) {
 		const initMainImage = property.images[0];
 		return (

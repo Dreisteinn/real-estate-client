@@ -168,6 +168,11 @@
 			box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 			gap: 10px;
 			width: 34%;
+			& > span {
+				display: flex !important;
+				justify-content: center;
+				padding: 5px 0;
+			}
 			.Publisher {
 				display: flex;
 				flex-direction: column;
@@ -183,30 +188,35 @@
 					font-weight: 600;
 				}
 			}
-			input,
-			textarea {
-				font-size: 18px;
-				padding: 10px;
-				border-radius: 5px;
-				border: 1px solid #ebebeb;
-				outline: unset;
-			}
-			.SenderMessage {
-				resize: none;
-				height: 80px;
-			}
-			button {
-				padding: 15px;
-				border: none;
-				cursor: pointer;
-				background-color: rgb(43, 43, 43);
-				color: white;
-				font-weight: 500;
-				border-radius: 2px;
-				border-top-right-radius: 15px;
-				transition: background 0.2s ease-out;
-				&:hover {
-					background-color: #ffbb00;
+			form {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				input,
+				textarea {
+					font-size: 18px;
+					padding: 10px;
+					border-radius: 5px;
+					border: 1px solid #ebebeb;
+					outline: unset;
+				}
+				.SenderMessage {
+					resize: none;
+					height: 80px;
+				}
+				button {
+					padding: 15px;
+					border: none;
+					cursor: pointer;
+					background-color: rgb(43, 43, 43);
+					color: white;
+					font-weight: 500;
+					border-radius: 2px;
+					border-top-right-radius: 15px;
+					transition: background 0.2s ease-out;
+					&:hover {
+						background-color: #ffbb00;
+					}
 				}
 			}
 		}

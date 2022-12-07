@@ -11,6 +11,7 @@ import Add from './Add/Add';
 import UserPosts from './UserPosts/UserPosts';
 import { useAuthCtx } from '../store/authContext';
 import { AnimatePresence } from 'framer-motion';
+import UserMessages from './UserMessages/UserMessages';
 
 function AnimatedRoutes() {
 	const { user } = useAuthCtx().state;
@@ -23,6 +24,7 @@ function AnimatedRoutes() {
 				<Route path='/properties/:id' element={<Property />} />
 				<Route path='/contact' element={<Contact />} />
 				<Route path='/about' element={<About />} />
+				<Route path='/messages' element={<UserMessages />} />
 				{!user && <Route path='/login' element={<Login />} />}
 				{!user && <Route path='/signup' element={<Signup />} />}
 				<Route path='/my-posts' element={<UserPosts />} />

@@ -8,6 +8,7 @@ import { getHighestPrice, getResettedFilters } from '../helpers';
 import { RiUser3Fill } from 'react-icons/ri';
 import { useAuthCtx } from '../store/authContext';
 import { motion } from 'framer-motion';
+import { BiMessageDetail } from 'react-icons/bi';
 
 const Header = () => {
 	const [showNav, setShowNav] = useState(false);
@@ -60,9 +61,12 @@ const Header = () => {
 					</li>
 					<li onClick={() => !user && setShowNav(false)}>
 						{user ? (
-							<button className={styles.LoginButton} onClick={() => navigate('/my-posts')}>
-								<RiUser3Fill /> {user.name}
-							</button>
+							<div className={styles.UserPanel}>
+								<button className={styles.LoginButton} onClick={() => navigate('/my-posts')}>
+									<RiUser3Fill /> {user.name}
+								</button>
+								<BiMessageDetail onClick={() => navigate('/messages')} />
+							</div>
 						) : (
 							<button className={styles.LoginButton} onClick={handleClick}>
 								შესვლა
