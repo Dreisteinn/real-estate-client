@@ -1,13 +1,11 @@
 import React, { useRef, useState } from 'react';
 import styles from './Property.module.scss';
-import { BsFillPersonFill } from 'react-icons/bs';
-import { MdPhoneAndroid } from 'react-icons/md';
 import { useAuthCtx } from '../../../store/authContext';
 import { useNavigate } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
+import Publisher from './Publisher';
 
 const Contact = ({ data }) => {
-	const { name, number } = data.publisher;
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const { user } = useAuthCtx().state;
@@ -18,10 +16,12 @@ const Contact = ({ data }) => {
 	const handleSend = async (event) => {
 		const form = event.target;
 		event.preventDefault();
+
 		if (!user) {
 			navigate('/login');
 			return;
 		}
+
 		setErrorMessage(null);
 		const text = textAreaRef.current.value;
 		const subject = subjectRef.current.value;
@@ -59,21 +59,14 @@ const Contact = ({ data }) => {
 			setErrorMessage('ყველა ველი უნდა იყოს შევსებული');
 		}
 	};
+
 	return (
 		<div className={styles.ContactToPublisher}>
-			<div className={styles.Publisher}>
-				<h3>
-					<BsFillPersonFill /> {name}
-				</h3>
-				<h4>
-					<MdPhoneAndroid />
-					{number}
-				</h4>
-			</div>
+			<Publisher data={data.publisher} />
 			{loading && <BeatLoader size={10} color='#252850' loading={loading} />}
 			{errorMessage && <p style={{ padding: '5px 15px', fontWeight: '600', color: ' red' }}>{errorMessage}</p>}
 			<form onSubmit={(e) => handleSend(e)}>
-				<input ref={subjectRef} required className={styles.Subject} placeholder='საკითხი'></input>
+				<input ref={subjectRef} required className={styles.Subject} placeholder='თემა'></input>
 				<textarea ref={textAreaRef} required className={styles.SenderMessage} placeholder='შეტყობინება'></textarea>
 				<button type='submit' onClick={() => handleSend()}>
 					გაგზავნა

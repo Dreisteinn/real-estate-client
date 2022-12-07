@@ -200,6 +200,9 @@
 					border: 1px solid #ebebeb;
 					outline: unset;
 				}
+				textarea {
+					min-height: 100px;
+				}
 				.SenderMessage {
 					resize: none;
 					height: 80px;

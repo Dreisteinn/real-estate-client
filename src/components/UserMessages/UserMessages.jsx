@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './UserMessages.module.scss';
 import Message from './Message';
 import { BeatLoader } from 'react-spinners';
+import { motion } from 'framer-motion';
 
 const UserMessages = () => {
 	const [messages, setMessages] = useState([]);
@@ -26,15 +27,18 @@ const UserMessages = () => {
 	}, []);
 
 	return (
-		<div className={styles.Wrapper}>
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 1 }}
+			className={styles.Wrapper}
+		>
 			<ul className={styles.Messages}>
 				<h2>შეტყობინებები</h2>
 				{loading && <BeatLoader size={10} color='#252850' loading={loading} />}
-				{messages.map((message, i) => (
-					<Message key={i} message={message} />
-				))}
+				{messages.length > 0 && messages.map((message, i) => <Message key={i} message={message} />)}
 			</ul>
-		</div>
+		</motion.div>
 	);
 };
 
