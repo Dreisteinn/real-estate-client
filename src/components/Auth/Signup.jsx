@@ -7,6 +7,7 @@ import { TbLetterF, TbLetterL } from 'react-icons/tb';
 import { BsTelephone } from 'react-icons/bs';
 import { getFullName } from '../../helpers';
 import useSignUp from '../../hooks/useSignUp';
+import { motion } from 'framer-motion';
 
 const Signup = () => {
 	const [email, setEmail] = useState('');
@@ -24,7 +25,12 @@ const Signup = () => {
 	};
 
 	return (
-		<div className={styles.Wrapper}>
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 1 }}
+			className={styles.Wrapper}
+		>
 			<form onSubmit={handleSignUp}>
 				<h1>რეგისტრაცია</h1>
 				{error && <p className={styles.FormError}>{error}</p>}
@@ -74,7 +80,7 @@ const Signup = () => {
 					disabled={loading}
 				/>
 			</form>
-		</div>
+		</motion.div>
 	);
 };
 

@@ -5,6 +5,7 @@ import Card from '../Home/Listing/Card';
 import usePropertiesCtx from '../../store/propertiesContext';
 import { getHighestPrice, getInitState } from '../../helpers';
 import FilteredProperties from '../Home/Filters/FilteredProperties';
+import { motion } from 'framer-motion';
 
 const Properties = () => {
 	const { properties, filters } = usePropertiesCtx();
@@ -12,7 +13,12 @@ const Properties = () => {
 	const initState = getInitState(filters, highestPrice);
 
 	return (
-		<div className={styles.Wrapper}>
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 1 }}
+			className={styles.Wrapper}
+		>
 			<div className={styles.SearchWrapper}>
 				<Search />
 			</div>
@@ -26,7 +32,7 @@ const Properties = () => {
 			) : (
 				<FilteredProperties />
 			)}
-		</div>
+		</motion.div>
 	);
 };
 

@@ -12,6 +12,7 @@ import Features from './Features';
 import GroupOfInputs from './GroupOfInputs';
 import Upload from './Upload';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Add = (e) => {
 	const [isResetted, setIsResetted] = useState(false);
@@ -26,6 +27,7 @@ const Add = (e) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setIsResetted(false);
+
 		if (user) {
 			const modifiedProperty = { ...property, publisher: { name: user.name, number: user.number, id: user.id } };
 
@@ -37,6 +39,7 @@ const Add = (e) => {
 					Authorization: `Bearer ${user.token}`,
 				},
 			});
+
 			const resData = await res.json();
 			if (res.ok) {
 				setProperty(initStateOfProperty);
@@ -53,7 +56,12 @@ const Add = (e) => {
 	};
 
 	return (
-		<div className={styles.Wrapper}>
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 1 }}
+			className={styles.Wrapper}
+		>
 			<h2 style={{ marginBottom: '30px', textAlign: 'center', color: '#313131' }}>განცხადების დამატება</h2>
 			<form onSubmit={(e) => handleSubmit(e)}>
 				<DropDowns />
@@ -70,7 +78,7 @@ const Add = (e) => {
 				</button>
 				{error && <p className={styles.FormError}>{error}</p>}
 			</form>
-		</div>
+		</motion.div>
 	);
 };
 

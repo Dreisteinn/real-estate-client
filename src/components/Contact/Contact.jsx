@@ -6,10 +6,16 @@ import { AiFillInstagram } from 'react-icons/ai';
 import { IoMail } from 'react-icons/io5';
 import { FaPhoneSquareAlt } from 'react-icons/fa';
 import { FaMapSigns } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
 	return (
-		<div className={styles.Wrapper}>
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 1 }}
+			className={styles.Wrapper}
+		>
 			<h1>დაგვიკავშირდით</h1>
 			<div className={styles.Contact}>
 				<ul className={styles.Socials}>
@@ -49,7 +55,7 @@ const Contact = () => {
 					<a href='https://www.maps.ie/distance-area-calculator.html'>measure distance on map</a>
 				</iframe>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

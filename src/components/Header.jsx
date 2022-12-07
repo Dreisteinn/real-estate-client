@@ -7,6 +7,7 @@ import usePropertiesCtx from '../store/propertiesContext';
 import { getHighestPrice, getResettedFilters } from '../helpers';
 import { RiUser3Fill } from 'react-icons/ri';
 import { useAuthCtx } from '../store/authContext';
+import { motion } from 'framer-motion';
 
 const Header = () => {
 	const [showNav, setShowNav] = useState(false);
@@ -33,7 +34,12 @@ const Header = () => {
 	};
 
 	return (
-		<header style={location !== '/' ? headerStyles : {}}>
+		<motion.header
+			initial={{ y: '-200%' }}
+			animate={{ y: '0' }}
+			transition={{ duration: 1, type: 'just' }}
+			style={location !== '/' ? headerStyles : {}}
+		>
 			<img className={styles.Logo} src={logo} alt='logo' />
 			<RiMenuLine className={styles.HamburgerIcon} onClick={() => setShowNav((prev) => !prev)} />
 			<nav className={showNav ? styles.Navigation : styles.active}>
@@ -65,7 +71,7 @@ const Header = () => {
 					</li>
 				</ul>
 			</nav>
-		</header>
+		</motion.header>
 	);
 };
 

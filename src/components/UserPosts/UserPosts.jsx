@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import useLogout from '../../hooks/useLogout';
 import Card from '../Home/Listing/Card';
 import useFetchUserPosts from '../../hooks/useFetchUserPosts';
+import { delay, motion } from 'framer-motion';
 
 const UserPosts = () => {
 	const { user } = useAuthCtx().state;
@@ -20,7 +21,12 @@ const UserPosts = () => {
 		return <Navigate to='/login' />;
 	} else {
 		return (
-			<div className={styles.Wrapper}>
+			<motion.div
+				initial={{ opacity: 0 }}
+				transition={{ duration: 1 }}
+				animate={{ opacity: 1 }}
+				className={styles.Wrapper}
+			>
 				<div className={styles.Heading}>
 					<GrAddCircle onClick={() => navigate('/add')} />
 					<h2>ჩემი განცხადებები</h2>
@@ -36,7 +42,7 @@ const UserPosts = () => {
 						})}
 					</ul>
 				</div>
-			</div>
+			</motion.div>
 		);
 	}
 };

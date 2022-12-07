@@ -4,6 +4,7 @@ import { FiMail } from 'react-icons/fi';
 import { VscKey } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
 import useLogin from '../../hooks/useLogin';
+import { motion } from 'framer-motion';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
@@ -17,7 +18,12 @@ const Login = () => {
 	};
 
 	return (
-		<div className={styles.Wrapper}>
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 1 }}
+			className={styles.Wrapper}
+		>
 			<form onSubmit={handleLogin}>
 				<h1>შესვლა</h1>
 				{error && <p className={styles.FormError}>{error}</p>}
@@ -37,7 +43,7 @@ const Login = () => {
 				<button disabled={loading}>შესვლა</button>
 				<input type='button' value='რეგისტრაცია' className={styles.SignupBtn} onClick={() => navigate('/signup')} />
 			</form>
-		</div>
+		</motion.div>
 	);
 };
 
