@@ -17,10 +17,21 @@ const UserPanel = ({ setShowNav }) => {
 	if (user) {
 		return (
 			<div className={styles.UserPanel}>
-				<button className={styles.LoginButton} onClick={() => navigate('/my-posts')}>
+				<button
+					className={styles.LoginButton}
+					onClick={() => {
+						setShowNav(false);
+						navigate('/my-posts');
+					}}
+				>
 					<RiUser3Fill /> {user.name}
 				</button>
-				<BiMessageDetail onClick={() => navigate('/messages')} />
+				<BiMessageDetail
+					onClick={() => {
+						setShowNav(false);
+						navigate('/messages');
+					}}
+				/>
 			</div>
 		);
 	} else {

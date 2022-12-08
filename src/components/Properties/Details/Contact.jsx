@@ -62,7 +62,7 @@ const Contact = ({ data }) => {
 
 	return (
 		<div className={styles.ContactToPublisher}>
-			<Publisher data={data.publisher} />
+			<Publisher data={data.publisher} className={styles.Publisher} />
 			{loading && <BeatLoader size={10} color='#252850' loading={loading} />}
 			{errorMessage && <p style={{ padding: '5px 15px', fontWeight: '600', color: ' red' }}>{errorMessage}</p>}
 			<form onSubmit={(e) => handleSend(e)}>

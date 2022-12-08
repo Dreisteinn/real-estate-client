@@ -47,6 +47,11 @@ header {
 					cursor: pointer;
 					color: #ffca37;
 					transition: 0.2s linear;
+					@media (max-width: 768px) {
+						position: absolute;
+						top: 35px;
+						left: 30px;
+					}
 					&:hover {
 						filter: contrast(150%);
 					}

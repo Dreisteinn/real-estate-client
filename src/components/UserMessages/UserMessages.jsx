@@ -25,7 +25,6 @@ const UserMessages = () => {
 		};
 		getMessages();
 	}, []);
-
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
@@ -36,7 +35,7 @@ const UserMessages = () => {
 			<ul className={styles.Messages}>
 				<h2>შეტყობინებები</h2>
 				{loading && <BeatLoader size={10} color='#252850' loading={loading} />}
-				{messages.length > 0 && messages.map((message, i) => <Message key={i} message={message} />)}
+				{!loading && messages.length > 0 && messages.map((message, i) => <Message key={i} message={message} />)}
 			</ul>
 		</motion.div>
 	);
