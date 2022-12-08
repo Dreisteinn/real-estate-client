@@ -3,11 +3,13 @@ import styles from './UserMessages.module.scss';
 import Message from './Message';
 import { BeatLoader } from 'react-spinners';
 import { motion } from 'framer-motion';
+import { useAuthCtx } from '../../store/authContext';
+import { BiMessageDetail } from 'react-icons/bi';
 
 const UserMessages = () => {
 	const [messages, setMessages] = useState([]);
 	const [loading, setLoading] = useState(false);
-	const { id, token } = JSON.parse(localStorage.getItem('user'));
+	const { id, token } = useAuthCtx().state.user;
 	const url = process.env.REACT_APP_API_URL;
 
 	useEffect(() => {
@@ -25,6 +27,7 @@ const UserMessages = () => {
 		};
 		getMessages();
 	}, []);
+
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
@@ -33,9 +36,14 @@ const UserMessages = () => {
 			className={styles.Wrapper}
 		>
 			<ul className={styles.Messages}>
-				<h2>შეტყობინებები</h2>
+				<h2>
+					შეტყობინებები
+					<BiMessageDetail />
+				</h2>
 				{loading && <BeatLoader size={10} color='#252850' loading={loading} />}
-				{!loading && messages.length > 0 && messages.map((message, i) => <Message key={i} message={message} />)}
+				{!loading &&
+					messages.length > 0 &&
+					messages.map((message, i) => <Message key={i} message={message} setMessages={setMessages} />)}
 			</ul>
 		</motion.div>
 	);

@@ -15,30 +15,58 @@
 		padding: 20px 8%;
 		background-color: rgb(12, 12, 12);
 		display: flex;
-		justify-content: space-between;
-		.Title_Address {
+		flex-direction: column;
+		gap: 20px;
+		.Delete {
+			align-self: end;
+			width: max-content;
+			padding: 8px 20px;
 			display: flex;
-			align-items: flex-start;
-			flex-direction: column;
-			max-width: 70%;
-			.Title {
-				color: white;
+			align-items: center;
+			border-radius: 4px;
+			border: none;
+			outline: none;
+			font-weight: 600;
+			cursor: pointer;
+			box-shadow: rgb(0 0 0 / 10%) 0px 0px 5px 0px, rgb(0 0 0 / 10%) 0px 0px 1px 0px;
+			gap: 5px;
+			background-color: crimson;
+			color: rgb(250, 242, 226);
+			svg {
+				font-size: 16px;
 			}
-			.Address {
-				color: #979797;
+			transition: background 0.2s linear;
+			&:hover {
+				background-color: rgb(179, 32, 61);
 			}
 		}
-		.Price_Area {
+		.PropertyDetails {
 			display: flex;
-			align-items: flex-start;
 			justify-content: space-between;
-			flex-direction: column;
-			color: #979797;
-			.Price {
-				color: white;
+			.Title_Address {
+				display: flex;
+				align-items: flex-start;
+				flex-direction: column;
+				max-width: 70%;
+				.Title {
+					color: white;
+				}
+				.Address {
+					color: #979797;
+				}
 			}
-			.Area {
+			.Price_Area {
+				display: flex;
+				align-items: flex-start;
+				justify-content: space-between;
+				flex-direction: column;
 				color: #979797;
+				.Price {
+					color: white;
+				}
+				.Area {
+					color: #979797;
+				}
 			}
 		}
 	}
@@ -295,24 +323,26 @@
 	}
 	@include media.md {
 		.PropertyHeader {
-			flex-direction: column;
-			gap: 20px;
-			text-align: center;
-			.Price_Area {
-				flex-direction: unset;
-			}
-			.Title_Address {
-				max-width: unset;
-				gap: 10px;
-				.Address {
-					font-size: 14px;
+			.PropertyDetails {
+				text-align: center;
+				flex-direction: column;
+				gap: 20px;
+				.Price_Area {
+					flex-direction: unset;
 				}
-			}
-			.Title {
-				font-size: 22px;
-			}
-			.Price {
-				font-size: 22px;
+				.Title_Address {
+					max-width: unset;
+					gap: 10px;
+					.Address {
+						font-size: 14px;
+					}
+				}
+				.Title {
+					font-size: 22px;
+				}
+				.Price {
+					font-size: 22px;
+				}
 			}
 		}
 	}

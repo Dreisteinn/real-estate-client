@@ -2,10 +2,10 @@ import React from 'react';
 import Card from '../Home/Listing/Card';
 import styles from './UserPosts.module.scss';
 import { BeatLoader } from 'react-spinners';
-import usePropertiesCtx from '../../store/propertiesContext';
+import useFetchUserPosts from '../../hooks/useFetchUserPosts';
 
 const Posts = ({ data }) => {
-	const { loading } = usePropertiesCtx();
+	const { loading } = useFetchUserPosts();
 	if (loading) {
 		return <BeatLoader size={15} color='#252850' loading={loading} />;
 	} else {
