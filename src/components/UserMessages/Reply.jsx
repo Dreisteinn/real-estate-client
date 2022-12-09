@@ -7,6 +7,7 @@ const Reply = ({ senderId, setShowTextArea, subject }) => {
 	const [text, setText] = useState('');
 	const [loading, setLoading] = useState(false);
 	const { token, email, number, name, id } = useAuthCtx().state.user;
+	const subjectText = subject.startsWith('პასუხი') ? subject : `პასუხი თემაზე - "${subject}"`;
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -26,7 +27,7 @@ const Reply = ({ senderId, setShowTextArea, subject }) => {
 					id,
 					name,
 				},
-				subject: `"${subject}"- პასუხი`,
+				subject: subjectText,
 				to: senderId,
 			}),
 		});
