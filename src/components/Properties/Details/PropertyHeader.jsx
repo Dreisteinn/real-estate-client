@@ -11,7 +11,11 @@ const PropertyDetailsHeader = ({ data }) => {
 	const { user } = useAuthCtx().state;
 	const { setProperties, properties } = usePropertiesCtx();
 
+	console.log(user);
 	const handleRemove = async () => {
+		if (!user.id) {
+			return;
+		}
 		const confirmed = window.confirm('ნამდვილად გსურთ განცხადების აღება?');
 		const url = process.env.REACT_APP_API_URL;
 		if (confirmed) {
@@ -40,7 +44,7 @@ const PropertyDetailsHeader = ({ data }) => {
 					</h4>
 				</div>
 			</div>
-			{publisher_id === user.id && (
+			{user && publisher_id === user.id && (
 				<button className={styles.Delete} onClick={() => handleRemove()}>
 					წაშალე
 					<BsFillTrash2Fill />

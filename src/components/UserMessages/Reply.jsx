@@ -42,11 +42,7 @@ const Reply = ({ senderId, setShowTextArea, subject }) => {
 				<BeatLoader size={10} color='#252850' loading={loading} />
 			) : (
 				<>
-					<textarea
-						placeholder='შეტყობინება...'
-						required
-						onChange={(e) => setText(e.target.value.toString().trim())}
-					/>
+					<textarea placeholder='პასუხი...' required onChange={(e) => setText(e.target.value.toString().trim())} />
 					<button type='submit'>გაგზავნა</button>
 				</>
 			)}

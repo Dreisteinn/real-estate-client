@@ -76,9 +76,9 @@
 				gap: 10px;
 				textarea {
 					resize: none;
-					min-height: 150px;
+					min-height: 120px;
 					font-size: 16px;
-					width: min(90%, 450px);
+					width: min(90%, 750px);
 					padding: 5px 10px;
 					border-radius: 5px;
 					border: 1px solid gray;
@@ -97,6 +97,10 @@
 					&:hover {
 						background-color: #d3d3d3;
 						color: rgb(43, 43, 43);
+					}
+					@media (max-width: 768px) {
+						font-size: 14px;
+						padding: 5px 10px;
 					}
 				}
 			}
