@@ -5,9 +5,9 @@
 	min-height: 80vh;
 	width: 100%;
 	@include mixins.center-flex;
-	gap: 80px;
+	gap: 60px;
 	flex-direction: column;
-	padding-top: 100px;
+	padding-top: 60px;
 	padding-bottom: 40px;
 	.Contact {
 		display: flex;
