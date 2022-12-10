@@ -5,6 +5,7 @@ import { BsTrash } from 'react-icons/bs';
 import { RiReplyLine } from 'react-icons/ri';
 import Reply from './Reply';
 import { useAuthCtx } from '../../store/authContext';
+import { getFormattedDate } from '../../helpers';
 
 const Message = ({ message, setMessages }) => {
 	const { subject, text, createdAt } = message;
@@ -12,12 +13,7 @@ const Message = ({ message, setMessages }) => {
 	const [showSenderDetails, setShowSenderDetails] = useState(false);
 	const [showTextArea, setShowTextArea] = useState(false);
 	const { token } = useAuthCtx().state.user;
-
-	const getDateAndtime = () => {
-		const date = new Date(createdAt.substring(0, 10));
-		const dateFormatted = date.toLocaleString('ka-GE', { day: 'numeric', month: 'long', year: 'numeric' });
-		return dateFormatted;
-	};
+	const date = getFormattedDate(createdAt);
 
 	const removeMessage = async () => {
 		const url = process.env.REACT_APP_API_URL;
@@ -66,7 +62,7 @@ const Message = ({ message, setMessages }) => {
 			<h3>{subject}</h3>
 			<p className={styles.MessageText}>{text}</p>
 			{showTextArea && <Reply senderId={id} setShowTextArea={setShowTextArea} subject={subject} />}
-			<p className={styles.MessageDate}>{getDateAndtime()}</p>
+			<p className={styles.MessageDate}>{date}</p>
 		</div>
 	);
 };

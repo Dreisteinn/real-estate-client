@@ -11,7 +11,6 @@ const PropertyDetailsHeader = ({ data }) => {
 	const { user } = useAuthCtx().state;
 	const { setProperties, properties } = usePropertiesCtx();
 
-	console.log(user);
 	const handleRemove = async () => {
 		if (!user.id) {
 			return;

@@ -141,6 +141,10 @@
 				flex-direction: column;
 				border-radius: 20px;
 				box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
+				@media (max-width: 620px) {
+					border-radius: 10px;
+					width: 96% !important;
+				}
 				h3 {
 					border-bottom: 1px solid #d8d8d8;
 					padding: 30px 0 30px 30px;
@@ -149,9 +153,12 @@
 			.Details {
 				ul {
 					display: grid;
-					grid-template-columns: repeat(5, 1fr);
+					grid-template-columns: 1fr 1fr 1fr 1fr 1.5fr;
 					align-items: center;
 					width: 100%;
+					@media (max-width: 620px) {
+						grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+					}
 					li {
 						@include mixins.center-flex;
 						padding: 20px 10px;

@@ -59,3 +59,9 @@ export const getFormattedNumber = (num) => {
 	const parsed = parseInt(str);
 	return parsed;
 };
+
+export const getFormattedDate = (timestamp) => {
+	const date = new Date(timestamp.substring(0, 10));
+	const dateFormatted = date.toLocaleString('ka-GE', { day: 'numeric', month: 'long', year: 'numeric' });
+	return dateFormatted;
+};

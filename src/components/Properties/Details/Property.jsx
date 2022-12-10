@@ -23,7 +23,7 @@ const Property = () => {
 					<div className={styles.Info}>
 						<img src={mainImage || initMainImage} alt='property' className={styles.MainImage} />
 						<AdditionalImages images={property.images} setMainImage={setMainImage} />
-						<Details details={property.details} />
+						<Details data={property} />
 						<Description description={property.description} />
 						<Features features={property.features} />
 					</div>
