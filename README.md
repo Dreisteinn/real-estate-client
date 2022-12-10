@@ -1,10 +1,12 @@
 # Real Estate Website
-### Technologies Used:
+## Built with
 - Mongo (Mongoose)
-- Express
-- React
-- Node 
+- ExpressJS
+- ReactJS
+- NodeJS
 - Cloudinary
 - Sass 
 - SwiperJS
-### Server: https://github.com/drainerr/real-estate-server
+- Framer Motion
+
+Server: https://github.com/drainerr/real-estate-server
