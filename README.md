@@ -1,8 +1,7 @@
 ## Built with
-- Mongo (Mongoose)
-- ExpressJS
+- Mongo / Mongoose
+- NodeJS / ExpressJS
 - ReactJS
-- NodeJS
 - Cloudinary
 - Sass 
 - SwiperJS
