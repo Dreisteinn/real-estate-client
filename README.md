@@ -1,4 +1,3 @@
-# Real Estate Website
 ## Built with
 - Mongo (Mongoose)
 - ExpressJS
