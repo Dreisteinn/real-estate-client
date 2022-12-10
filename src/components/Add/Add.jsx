@@ -18,11 +18,11 @@ const Add = (e) => {
 	const [isResetted, setIsResetted] = useState(false);
 	const { property, setProperty } = useNewPostCtx();
 	const [error, setError] = useState(null);
-	const url = process.env.REACT_APP_API_URL;
 	const { user } = useAuthCtx().state;
 	const { setProperties } = usePropertiesCtx();
 	const { setPosts: setUserPosts } = useFetchUserPosts();
 	const navigate = useNavigate();
+	const url = process.env.REACT_APP_API_URL;
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -30,7 +30,10 @@ const Add = (e) => {
 
 		if (user) {
 			const modifiedProperty = { ...property, publisher: { name: user.name, number: user.number, id: user.id } };
-
+			if (modifiedProperty.images < 1) {
+				setError('აუცილებელია ატვირთოთ მინიმუმ ერთი სურათი!');
+				return;
+			}
 			const res = await fetch(`${url}/api/properties`, {
 				method: 'POST',
 				body: JSON.stringify(modifiedProperty),

@@ -18,12 +18,13 @@ const PropertyDetailsHeader = ({ data }) => {
 		const confirmed = window.confirm('ნამდვილად გსურთ განცხადების აღება?');
 		const url = process.env.REACT_APP_API_URL;
 		if (confirmed) {
-			await fetch(`${url}/api/properties/${data.id}`, {
+			const resp = await fetch(`${url}/api/properties/${data.id}`, {
 				method: 'Delete',
 				headers: {
 					Authorization: `Bearer ${user.token}`,
 				},
 			});
+			console.log(await resp.json());
 			const updatedProperties = properties.filter((prop) => prop.id !== data.id);
 			setProperties(updatedProperties);
 		}

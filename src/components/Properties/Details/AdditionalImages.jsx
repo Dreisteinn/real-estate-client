@@ -8,11 +8,11 @@ const AdditionalImages = ({ images, setMainImage }) => {
 		<div className={styles.AdditionalImages}>
 			<ul>
 				<Swiper slidesPerView={6} spaceBetween={20} className={['mySwiper', styles.Swiper].join(' ')}>
-					{images.map((url, i) => {
+					{images.map((image, i) => {
 						return (
 							<SwiperSlide key={i}>
-								<li onClick={() => setMainImage(url)}>
-									<img src={url} alt='decoration' />
+								<li onClick={() => setMainImage(image.url)}>
+									<img src={image.url} alt='decoration' />
 								</li>
 							</SwiperSlide>
 						);

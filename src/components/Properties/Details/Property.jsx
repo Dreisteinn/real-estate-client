@@ -15,7 +15,7 @@ const Property = () => {
 	const [mainImage, setMainImage] = useState(null);
 
 	if (property) {
-		const initMainImage = property.images[0];
+		const initMainImage = property.images[0].url;
 		return (
 			<div className={styles.Wrapper}>
 				<PropertyDetailsHeader data={property} />

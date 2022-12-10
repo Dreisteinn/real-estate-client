@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 import { getTitle } from '../../../helpers';
 
 const Card = ({ data }) => {
-	const { price, location, transactionType, propertyType } = data;
-	const posterImage = data.images[0];
+	const { price, location, transactionType, propertyType, images } = data;
+	const posterImage = images[0].url;
 	const { bathroom, parking, room } = data.details;
 	const title = getTitle(location, transactionType, propertyType);
 

@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-// import properties from '../data';
 import { getHighestPrice, getResettedFilters } from '../helpers';
 
 const PropertiesCtx = createContext();
@@ -24,7 +23,6 @@ export const PropertiesContextProvider = ({ children }) => {
 		};
 		getProperties();
 	}, []);
-
 	return (
 		<PropertiesCtx.Provider value={{ properties, setProperties, filters, setFilters, loading }}>
 			{children}

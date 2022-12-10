@@ -9,14 +9,14 @@ const Promo = () => {
 			<motion.img
 				initial={{ x: '-100%' }}
 				animate={{ x: 0 }}
-				transition={{ duration: 1, delay: '.8' }}
+				transition={{ duration: 1, delay: '.5' }}
 				src={image}
 				alt='promo'
 			/>
 			<motion.div
 				initial={{ x: '100%' }}
 				animate={{ x: 0 }}
-				transition={{ duration: 1, delay: '.8' }}
+				transition={{ duration: 1, delay: '.5' }}
 				className={styles.TextContent}
 			>
 				<div className={styles.Line}></div>
