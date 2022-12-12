@@ -59,13 +59,10 @@ header {
 			}
 
 			li {
-				transition: color 0.25s linear, border 0.2s ease-out;
-				border-bottom: 1px solid transparent;
-				padding: 5px 0;
+				transition: color 0.25s ease-out;
 				&:not(:last-child):hover {
 					cursor: pointer;
 					color: #ffc508;
-					border-color: #ffc508;
 				}
 			}
 		}
