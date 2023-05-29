@@ -2,12 +2,15 @@ import React from 'react';
 import AuthCtxProvider from './authContext';
 import NewPostContextProvider from './newPostContextProvider';
 import { PropertiesContextProvider } from './propertiesContext';
+import FiltersCtxProvider from './filtersContext';
 
 const ContextProviders = ({ children }) => {
 	return (
 		<PropertiesContextProvider>
 			<AuthCtxProvider>
-				<NewPostContextProvider>{children}</NewPostContextProvider>
+				<FiltersCtxProvider>
+					<NewPostContextProvider>{children}</NewPostContextProvider>
+				</FiltersCtxProvider>
 			</AuthCtxProvider>
 		</PropertiesContextProvider>
 	);

@@ -11,6 +11,7 @@ const authReducer = (state, action) => {
 			return state;
 	}
 };
+
 const AuthCtxProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(authReducer, {
 		user: null,
