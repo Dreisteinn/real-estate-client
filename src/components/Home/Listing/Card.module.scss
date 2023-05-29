@@ -32,6 +32,15 @@
 		height: 15vw;
 		object-fit: cover;
 	}
+	@media (min-width: 1440px) {
+		h3,
+		h4 {
+			font-size: 20px;
+		}
+		img {
+			height: 14vw;
+		}
+	}
 	@media (max-width: 768px) {
 		img {
 			height: 25vw;

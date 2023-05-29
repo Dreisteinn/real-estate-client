@@ -53,6 +53,9 @@ $border-radius: 8px;
 			color: #2c3a61;
 			font-weight: bold;
 			cursor: default;
+			@include media.xxl {
+				font-size: 18px;
+			}
 		}
 		&:not(:last-child) {
 			border-right: 1px solid darkgray;
@@ -79,6 +82,15 @@ $border-radius: 8px;
 		transition: opacity 0.2s linear;
 		visibility: none;
 		font-size: 15px;
+		@include media.xxl {
+			padding: 30px 40px;
+			font-size: 16px;
+			gap: 16px;
+			input {
+				min-width: max-content;
+				font-size: 16px;
+			}
+		}
 		input {
 			padding: 8px 10px;
 			border-radius: 5px;
@@ -101,6 +113,12 @@ $border-radius: 8px;
 				transition: background 0.2s linear;
 				&:hover {
 					background-color: rgb(255, 206, 71);
+				}
+			}
+			@include media.xxl {
+				li {
+					padding: 7px 15px;
+					border-radius: 7px;
 				}
 			}
 		}

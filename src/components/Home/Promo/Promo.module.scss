@@ -32,6 +32,16 @@
 			font-size: 18px;
 		}
 	}
+	@include media.xxl {
+		.TextContent {
+			h2 {
+				font-size: 32px;
+			}
+			p {
+				font-size: 20px;
+			}
+		}
+	}
 	@include media.lg {
 		.TextContent {
 			max-width: 45%;
@@ -120,6 +130,16 @@
 		transition: 0.2s linear;
 		&:hover {
 			background-color: #fa8f03;
+		}
+	}
+	@include media.xxl {
+		padding: 200px 0;
+		gap: 70px;
+		h2 {
+			font-size: 36px;
+		}
+		p {
+			font-size: 22px;
 		}
 	}
 	@include media.lg {

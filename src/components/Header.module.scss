@@ -87,6 +87,23 @@ header {
 			}
 		}
 	}
+	@include media.xxl {
+		.Logo {
+			height: 70px;
+		}
+		nav {
+			ul {
+				li {
+					button {
+						font-size: 18px;
+					}
+					a {
+						font-size: 18px;
+					}
+				}
+			}
+		}
+	}
 	@include media.md {
 		align-items: flex-start;
 	}

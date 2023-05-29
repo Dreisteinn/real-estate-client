@@ -29,6 +29,16 @@
 			min-height: 50px;
 		}
 	}
+	@include media.xxl {
+		gap: 30px;
+		p {
+			font-size: 22px;
+			max-width: 40%;
+		}
+		.Properties {
+			font-size: 20px;
+		}
+	}
 	@include media.xl {
 		h3 {
 			font-size: 14px !important;

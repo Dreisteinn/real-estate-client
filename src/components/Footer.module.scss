@@ -76,6 +76,41 @@
 			}
 		}
 	}
+	@include media.xxl {
+		.Map {
+			iframe {
+				height: 20vw;
+				width: 40vw;
+			}
+		}
+		.Information {
+			.NavAboutWrapper {
+				.Navigation {
+					h3 {
+						font-size: 24px;
+					}
+					ul {
+						li {
+							font-size: 20px;
+						}
+					}
+				}
+				.About {
+					img {
+						width: 120px;
+					}
+				}
+			}
+			h2 {
+				font-size: 30px;
+			}
+			.Socials {
+				svg {
+					font-size: 2rem;
+				}
+			}
+		}
+	}
 	@include media.md {
 		flex-direction: column;
 		gap: 30px;
