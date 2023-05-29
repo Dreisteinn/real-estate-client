@@ -37,6 +37,19 @@
 				rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 		}
 	}
+	@include media.xxl {
+		.Contact {
+			ul {
+				li {
+					font-size: 24px;
+					gap: 10px;
+					svg {
+						font-size: 24px;
+					}
+				}
+			}
+		}
+	}
 	@include media.md {
 		padding-top: 50px;
 		padding-bottom: 0;

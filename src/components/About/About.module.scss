@@ -28,6 +28,16 @@
 			min-width: 40%;
 		}
 	}
+	@include media.xxl {
+		.InnerContainer {
+			.Info {
+				p {
+					max-width: 80%;
+					font-size: 22px;
+				}
+			}
+		}
+	}
 	@include media.lg {
 		margin: 50px 0;
 		.InnerContainer {

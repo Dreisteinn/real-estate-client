@@ -93,6 +93,11 @@ $borderRadius: 10px;
 			}
 		}
 	}
+	@include media.xxl {
+		form {
+			min-width: 30%;
+		}
+	}
 	@include media.lg {
 		form {
 			min-width: 60%;
