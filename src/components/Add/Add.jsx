@@ -21,12 +21,14 @@ const Add = (e) => {
 	const { user } = useAuthCtx().state;
 	const { setProperties } = usePropertiesCtx();
 	const { setPosts: setUserPosts } = useFetchUserPosts();
+	const [shouldDisable, setShouldDisable] = useState(false);
 	const navigate = useNavigate();
 	const url = process.env.REACT_APP_API_URL;
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setIsResetted(false);
+		setShouldDisable(true);
 
 		if (user) {
 			const modifiedProperty = { ...property, publisher: { name: user.name, number: user.number, id: user.id } };
@@ -53,6 +55,7 @@ const Add = (e) => {
 				navigate('/my-posts');
 			} else {
 				setError('დარწმუნდით რომ ყველა ველი შევსებული გაქვთ!');
+				setShouldDisable(false);
 			}
 			console.log(resData);
 		}
@@ -76,7 +79,7 @@ const Add = (e) => {
 				<Upload resetted={isResetted} />
 				<Description />
 				<Features />
-				<button type='submit' className={styles.SubmitButton}>
+				<button type='submit' className={styles.SubmitButton} disabled={shouldDisable}>
 					დამატება
 				</button>
 				{error && <p className={styles.FormError}>{error}</p>}
