@@ -5,19 +5,22 @@ import { BeatLoader } from 'react-spinners';
 import useFetchUserPosts from '../../hooks/useFetchUserPosts';
 
 const Posts = ({ data }) => {
+	console.log(data);
 	const { loading } = useFetchUserPosts();
-	if (loading) {
-		return <BeatLoader size={15} color='#252850' loading={loading} />;
-	} else {
-		return (
-			<div className={styles.Posts}>
-				<ul className={styles.Properties}>
-					{data.map((post, i) => {
-						return <Card key={i} data={post} />;
-					})}
-				</ul>
-			</div>
-		);
+	if (!data.error) {
+		if (loading) {
+			return <BeatLoader size={15} color='#252850' loading={loading} />;
+		} else {
+			return (
+				<div className={styles.Posts}>
+					<ul className={styles.Properties}>
+						{data?.map((post, i) => {
+							return <Card key={i} data={post} />;
+						})}
+					</ul>
+				</div>
+			);
+		}
 	}
 };
 
